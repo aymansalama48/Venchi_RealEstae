@@ -1,0 +1,481 @@
+﻿@model TestDash.Models.CLSuser
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+
+
+
+
+
+
+
+
+
+<!-- Navbar -->
+<nav class="relative flex flex-wrap items-center justify-between px-0 py-2 mx-6 transition-all ease-in shadow-none duration-250 rounded-2xl lg:flex-nowrap lg:justify-start" navbar-main navbar-scroll="false">
+    <div class="flex items-center justify-between w-full px-4 py-1 mx-auto flex-wrap-inherit">
+        <nav>
+            <ol class="flex flex-wrap pt-1 bg-transparent rounded-lg">
+                <li class="pl-2 text-sm leading-normal">
+                    <a class="text-white opacity-50" href="javascript:;">لوحة التحكم</a>
+                </li>
+                <li class="text-sm pl-2 capitalize leading-normal text-white before:float-right before:pl-2 before:text-gray-600 before:content-['/']" aria-current="page">الموظفون</li>
+            </ol>
+            <h6 class="mb-0 font-bold text-white capitalize dark:text-white">تفاصيل الموظف</h6>
+        </nav>
+        <!-- breadcrumb -->
+
+
+
+
+        <div class="flex items-center mt-2 grow sm:mt-0 md:mr-0 lg:flex lg:basis-auto">
+            <div class="flex items-center md:ml-auto md:pr-4">
+            </div>
+            <ul class="flex flex-row justify-end pl-0 pr-10 mb-0 ml-0 mr-auto list-none md-max:w-full">
+
+                <li class="flex items-center pr-4 xl:hidden">
+                    <a href="javascript:;" class="block p-0 text-sm text-white transition-all ease-nav-brand" sidenav-trigger>
+                        <div class="w-4.5 overflow-hidden">
+                            <i class="ease mb-0.75 relative block h-0.5 rounded-sm bg-white transition-all"></i>
+                            <i class="ease mb-0.75 relative block h-0.5 rounded-sm bg-white transition-all"></i>
+                            <i class="ease relative block h-0.5 rounded-sm bg-white transition-all"></i>
+                        </div>
+                    </a>
+                </li>
+                <li class="flex items-center px-4">
+                    <a href="javascript:;" class="p-0 text-sm text-white transition-all ease-nav-brand">
+                        <i fixed-plugin-button-nav class="cursor-pointer fa fa-cog" aria-hidden="true"></i>
+                        <!-- fixed-plugin-button-nav  -->
+                    </a>
+                </li>
+
+              
+
+
+            </ul>
+        </div>
+
+
+
+
+
+    </div>
+
+
+</nav>
+
+<!-- end Navbar -->
+
+
+<center>
+
+    <div class="A3_Intro">
+
+        <h2 style="font-size: 25px; color: black;"> عرض معلومات وتفاصيل الموظف</h2>
+
+    </div>
+</center>
+
+<style>
+    .A3_Intro {
+        display: inline-block; /* ياخد عرض المحتوى فقط */
+        text-align: center;
+        font-size: 25px;
+        margin: 30px auto; /* ⬅️ توسيط أفقي */
+        color: #000;
+        padding: 10px 20px;
+        background-color: rgba(255, 255, 255, 0.788);
+        border-radius: 100px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        font-weight: bold;
+    }
+
+    @@media (max-width: 600px) {
+        .A3_Intro {
+            font-size: 16px;
+            border-radius: 30px;
+            padding: 8px 16px;
+        }
+    }
+</style>
+
+
+
+
+
+<div class="w-full px-6 py-6 mx-auto employee-content">
+    <div class="flex flex-wrap justify-center -mx-3">
+        <div class="w-full max-w-full px-3 mb-6 lg:mb-0 lg:w-4/12 lg:flex-none">
+            <div class="relative flex flex-col h-full min-w-0 break-words bg-white border-0 shadow-xl dark:bg-slate-850 dark:shadow-dark-xl rounded-2xl bg-clip-border">
+                <div class="flex-auto p-6">
+                    <div class="flex flex-wrap -mx-3">
+                        <div class="flex-none w-auto max-w-full px-3">
+                            <div class="relative inline-flex items-center justify-center text-white transition-all duration-200 ease-in-out text-base h-19 w-19 rounded-xl">
+                                <img src="@Url.Content("~/img/Em.jpg")" alt="profile-img" class="w-full h-full object-cover shadow-2xl rounded-xl" />
+                            </div>
+                        </div>
+                        <div class="flex-none w-auto max-w-full px-3 my-auto">
+                            <div class="h-full">
+                                <div class="flex items-center gap-4">
+                                    <h5 class="text-2xl font-bold dark:text-white">@Model.FullName</h5>
+                                </div>
+                                <p class="mt-2 font-semibold leading-normal text-slate-600 text-size-sm">@Model.JobTitle</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="contact-icon-container mt-2">
+
+
+                        <a href="https://wa.me/@Model.PhoneNumber" class="contact-icon-button" title="Call">
+                            <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="Phone Call">
+                        </a>
+                        <a href="tel:@Model.PhoneNumber" class="contact-icon-button" title="Call">
+                            <img src="https://cdn-icons-png.flaticon.com/512/597/597177.png" alt="Phone Call">
+                        </a>
+                     
+
+
+                    </div>
+                    <div class="mt-6">
+                        <div class="flex flex-wrap -mx-3">
+                            <div class="w-full max-w-full px-3 flex-0">
+                                <div class="flex flex-col">
+                                    <div class="mb-4">
+                                        <h6 class="mb-1 text-sm font-bold dark:text-white text-center border-t border-b border-gray-200 py-2">معلومات الاتصال</h6>
+                                        <div class="flex items-center justify-center mt-2">
+                                            <i class="fas fa-phone text-slate-400 ml-2"></i>
+                                            <span class="text-sm">رقم الهاتف: @Model.PhoneNumber</span>
+                                        </div>
+                                        <div class="flex items-center justify-center mt-2">
+                                            <i class="fas fa-envelope text-slate-400 ml-2"></i>
+                                            <span class="text-sm">البريد الإلكتروني: @Model.Email</span>
+                                        </div>
+                                    </div>
+                                    <div class="mb-4">
+                                        <h6 class="mb-1 text-sm font-bold dark:text-white text-center border-t border-b border-gray-200 py-2">المسمى الوظيفي</h6>
+                                        <div class="flex items-center justify-center mt-2">
+                                            <i class="fas fa-briefcase text-slate-400 ml-2"></i>
+                                            <span class="text-sm">@Model.JobTitle</span>
+                                        </div>
+                                    </div>
+                                    <div class="mb-4">
+                                        <h6 class="mb-1 text-sm font-bold dark:text-white text-center border-t border-b border-gray-200 py-2">القسم</h6>
+                                        <div class="flex items-center justify-center mt-2">
+                                            <i class="fas fa-users text-slate-400 ml-2"></i>
+                                            <span class="text-sm">@Model.Role</span>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <h6 class="mb-1 text-sm font-bold dark:text-white text-center border-t border-b border-gray-200 py-2">تاريخ التعيين</h6>
+                                        <div class="flex items-center justify-center mt-2">
+                                            <i class="fas fa-calendar-alt text-slate-400 ml-2"></i>
+                                            <span class="text-sm">@Model.HireDate</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="w-full max-w-full px-3 lg:w-4/12 lg:flex-none">
+            <div class="relative flex flex-col min-w-0 break-words bg-white border-0 shadow-xl dark:bg-slate-850 dark:shadow-dark-xl rounded-2xl bg-clip-border" style="max-height: 200px;">
+                <div class="flex-auto p-4">
+                    <h6 class="mb-3 text-sm font-bold dark:text-white text-center border-t border-b border-gray-200 py-2">ملاحظات حول الموظف</h6>
+                    <div class="mb-4">
+                        <ul class="list-none text-center">
+                            <li class="mb-2 flex items-center justify-center">
+                                <i class="fas fa-check-circle text-emerald-500 ml-2"></i>
+                                <span style="white-space: pre-wrap; word-wrap: break-word;">@Model.Notes</span>
+                            </li>
+                          
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="relative flex flex-col min-w-0 break-words bg-white border-0 shadow-xl dark:bg-slate-850 dark:shadow-dark-xl rounded-2xl bg-clip-border mt-4">
+                <div class="flex-auto p-4">
+                    <h6 class="mb-3 text-sm font-bold dark:text-white text-center border-t border-b border-gray-200 py-2">إجراءات</h6>
+                    <div class="flex flex-col gap-4 ">
+                        <a asp-action="Edit" asp-route-id="@Model?.Id">
+
+                        <button class="action-button edit-button">
+                            <i class="fas fa-edit mr-2"></i>
+                            تعديل بيانات الموظف
+                        </button>
+                        </a>
+                        <br>
+                        <!-- زر الحذف (يفتح المودال) -->
+                        <button type="button" class="action-button delete-button" onclick="showDeleteModal(@Model.Id)">
+                            <i class="fas fa-trash-alt mr-2"></i>
+                            حذف الموظف
+                        </button>
+
+                        <br>
+                        <a asp-action="employees">
+
+                        <button class="action-button back-button">
+                            <i class="fas fa-arrow-right mr-2"></i>
+                            الرجوع لصفحة الموظفين
+                        </button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- مودال التأكيد -->
+<div id="deleteModal" style="display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: 9999;">
+    <div style="
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: white;
+        padding: 20px;
+        border-radius: 10px;
+        width: 90%;
+        max-width: 320px;
+        text-align: center;
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+        z-index: 10000;">
+
+        <h3 style="margin-bottom: 20px; color: #1f2937; font-weight: bold;">
+            هل أنت متأكد من حذف الموظف؟
+        </h3>
+
+        <form id="deleteForm" method="post">
+            @Html.AntiForgeryToken() <!-- مهم جدًا -->
+
+            <input type="hidden" name="id" id="deleteClientId" />
+
+            <button type="submit" style="background-color: #dc2626; color: white; padding: 8px 16px; border-radius: 8px; margin: 0 5px;">
+                نعم، احذف
+            </button>
+            <button type="button" onclick="closeDeleteModal()" style="background-color: #2563eb; color: white; padding: 8px 16px; border-radius: 8px; margin: 0 5px;">
+                إلغاء
+            </button>
+        </form>
+    </div>
+</div>
+
+
+
+<script>
+        function showDeleteModal(clientId) {
+        // تعيين القيمة للـ hidden input
+        document.getElementById("deleteClientId").value = clientId;
+
+        // تعيين الرابط الصحيح
+        document.getElementById("deleteForm").action = `/CLSuser/DeleteConfirmed/${clientId}`;
+
+        // إظهار المودال
+        document.getElementById("deleteModal").style.display = "block";
+    }
+
+</script>
+
+
+
+
+
+
+
+<style>
+    /* Custom styles for Employee Details */
+    .rounded-2xl {
+        border-radius: 1rem;
+    }
+
+    .text-size-sm {
+        font-size: 0.875rem;
+    }
+
+    /* Quick contact buttons */
+    .contact-icon-container {
+        display: flex;
+        gap: 20px;
+        justify-content: center;
+        align-items: center;
+        margin-top: 1rem; /* Added margin for spacing */
+    }
+
+    .contact-icon-button {
+        width: 31.5px;
+        height: 31.5px;
+        border-radius: 50%;
+        background-color: #ffffff;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: transform 0.3s ease;
+    }
+
+        .contact-icon-button:hover {
+            transform: scale(1.1);
+        }
+
+        .contact-icon-button img {
+            width: 18px;
+            height: 18px;
+            object-fit: contain;
+        }
+
+    /* List styles */
+    .list-none li {
+        transition: all 0.3s ease;
+    }
+
+        .list-none li:hover {
+            transform: translateX(-5px);
+        }
+
+    /* Card styles */
+    .relative {
+        transition: all 0.3s ease;
+    }
+
+    /* Action buttons */
+    .action-button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 6px;
+        padding: 8px 16px;
+        border-radius: 0.5rem;
+        font-weight: 600;
+        transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        text-decoration: none;
+        color: #fff;
+        font-size: 0.85rem;
+        width: 100%; /* Make buttons full width */
+    }
+
+        .action-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+
+    .edit-button {
+        background-color: #3b82f6; /* Blue */
+    }
+
+        .edit-button:hover {
+            background-color: #2563eb;
+        }
+
+    .delete-button {
+        background-color: #ef4444; /* Red */
+    }
+
+        .delete-button:hover {
+            background-color: #dc2626;
+        }
+
+    .back-button {
+        background-color: #6b7280; /* Gray */
+    }
+
+        .back-button:hover {
+            background-color: #4b5563;
+        }
+
+
+    .employee-content h2,
+    .employee-content p,
+    .employee-content h5,
+    .employee-content h6,
+    .employee-content span,
+    .employee-content li,
+    .employee-content div,
+    .employee-content label {
+        color: black !important;
+    }
+
+
+</style>
+
+@* 
+<h1>Details</h1>
+
+<div>
+    <h4>CLSuser</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.FullName)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.FullName)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.JobTitle)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.JobTitle)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Department)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Department)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.PhoneNumber)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.PhoneNumber)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.HireDate)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.HireDate)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Notes)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Notes)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.PasswordHash)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.PasswordHash)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Role)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Role)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.ProfileImageFileName)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.ProfileImageFileName)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>
+ *@

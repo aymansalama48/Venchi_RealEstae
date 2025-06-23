@@ -1,0 +1,571 @@
+﻿@model TestDash.Models.CLSclient
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+
+<style>
+    /* خلي النص داخل الفورم أسود */
+    form.text-black * {
+        color: black !important;
+    }
+
+    /* استثناء للأزرار عشان تفضل بلونها الأصلي */
+    form.text-black .action-button {
+        color: white !important;
+    }
+</style>
+
+
+
+
+
+
+
+
+<!-- Navbar -->
+<nav class="relative flex flex-wrap items-center justify-between px-0 py-2 mx-6 transition-all ease-in shadow-none duration-250 rounded-2xl lg:flex-nowrap lg:justify-start" navbar-main navbar-scroll="false">
+    <div class="flex items-center justify-between w-full px-4 py-1 mx-auto flex-wrap-inherit">
+        <nav>
+            <ol class="flex flex-wrap pt-1 bg-transparent rounded-lg">
+                <li class="pl-2 text-sm leading-normal">
+                    <a class="text-white opacity-50" href="javascript:;">لوحة التحكم</a>
+                </li>
+                <li class="text-sm pl-2 capitalize leading-normal text-white before:float-right before:pl-2 before:text-gray-600 before:content-['/']" aria-current="page">تفاصيل العميل </li>
+            </ol>
+            <h6 class="mb-0 font-bold text-white capitalize dark:text-white">تعديل بيانات العميل</h6>
+        </nav>
+        <!-- breadcrumb -->
+
+
+
+
+        <div class="flex items-center mt-2 grow sm:mt-0 md:mr-0 lg:flex lg:basis-auto">
+            <div class="flex items-center md:ml-auto md:pr-4">
+            </div>
+            <ul class="flex flex-row justify-end pl-0 pr-10 mb-0 ml-0 mr-auto list-none md-max:w-full">
+
+                <li class="flex items-center pr-4 xl:hidden">
+                    <a href="javascript:;" class="block p-0 text-sm text-white transition-all ease-nav-brand" sidenav-trigger>
+                        <div class="w-4.5 overflow-hidden">
+                            <i class="ease mb-0.75 relative block h-0.5 rounded-sm bg-white transition-all"></i>
+                            <i class="ease mb-0.75 relative block h-0.5 rounded-sm bg-white transition-all"></i>
+                            <i class="ease relative block h-0.5 rounded-sm bg-white transition-all"></i>
+                        </div>
+                    </a>
+                </li>
+                <li class="flex items-center px-4">
+                    <a href="javascript:;" class="p-0 text-sm text-white transition-all ease-nav-brand">
+                        <i fixed-plugin-button-nav class="cursor-pointer fa fa-cog" aria-hidden="true"></i>
+                        <!-- fixed-plugin-button-nav  -->
+                    </a>
+                </li>
+         </ul>
+        </div>
+
+
+
+
+
+    </div>
+
+
+</nav>
+
+<!-- end Navbar -->
+
+
+<center>
+
+    <div class="A3_Intro">
+
+
+
+
+        <h2 style="font-size: 25px; color:black ">
+            قم بتحديث معلومات العميل هنا
+        </h2>
+    </div>
+</center>
+
+<style>
+    .A3_Intro {
+        display: inline-block; /* ياخد عرض المحتوى فقط */
+        text-align: center;
+        font-size: 25px;
+        margin: 30px auto; /* ⬅️ توسيط أفقي */
+        color: #000;
+        padding: 10px 20px;
+        background-color: rgba(255, 255, 255, 0.788);
+        border-radius: 100px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        font-weight: bold;
+    }
+
+    @@media (max-width: 600px) {
+        .A3_Intro {
+            font-size: 16px;
+            border-radius: 30px;
+            padding: 8px 16px;
+        }
+    }
+</style>
+
+
+
+
+
+
+
+
+
+
+
+    <div class="w-full px-6 py-6 mx-auto">
+    <form asp-action="Edit" asp-controller="CLSclients" asp-route-id="@Model.Id" method="post" class="text-black">
+        <div class="flex flex-wrap justify-center -mx-3">
+                <div class="w-full max-w-full px-3 mb-6 lg:mb-0 lg:w-4/12 lg:flex-none">
+                    <div class="relative flex flex-col h-full min-w-0 break-words bg-white border-0 shadow-xl dark:bg-slate-850 dark:shadow-dark-xl rounded-2xl bg-clip-border">
+                        <div class="flex-auto p-6">
+                            <div class="flex flex-wrap -mx-3">
+                                <div class="flex-none w-auto max-w-full px-3">
+                                    <div class="relative inline-flex items-center justify-center text-white transition-all duration-200 ease-in-out text-base h-19 w-19 rounded-xl overflow-hidden">
+                                    <img src="@Url.Content("~/img/123.jpg")" alt="profile-img" class="w-full h-full object-cover shadow-2xl rounded-xl" />
+                                        <label for="upload-photo" class="absolute bottom-0 right-0 p-1 bg-gray-700 bg-opacity-70 rounded-full cursor-pointer">
+                                            <i class="fas fa-camera text-white text-xs"></i>
+                                            <input type="file" id="upload-photo" class="hidden" accept="image/*">
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="flex-none w-auto max-w-full px-3 my-auto">
+                                    <div class="h-full">
+                                        <div class="flex items-center gap-4">
+                                        <input type="text" id="client-name" name="Name" value="@Model.Name" class="text-2xl font-bold dark:text-white" style="background: none; border: none; padding: 0; text-align: right;" />
+                                        </div>
+                                    <div class="profile-header-status">
+                                        <label>الحالة</label>
+                                        <select id="client-status" name="Status" required
+                                                style="width:100%; border:1px solid #ddd; border-radius:7px; padding:7px 10px; background:#fff;">
+                                            @foreach (var status in new[] { "New", "Follow Up", "No Ansewar", "Meeting", "Done Deal", "Low Budget" })
+                                            {
+                                                if (Model.Status == status)
+                                                {
+                                                    <option value="@status" selected>@status</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="@status">@status</option>
+                                                }
+                                            }
+                                        </select>
+                                    </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="contact-icon-container mt-2">
+                                <a href="javascript:void(0);" class="contact-icon-button" title="WhatsApp">
+                                    <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp">
+                                </a>
+                                <a href="javascript:void(0);" class="contact-icon-button" title="Call">
+                                    <img src="https://cdn-icons-png.flaticon.com/512/597/597177.png" alt="Phone Call">
+                                </a>
+                                <a href="javascript:void(0);" class="contact-icon-button" title="Truecaller">
+                                    <img src="https://www.truecaller.com/cms/af897255f80ca7b3a817bfe6c15d803e.avif" alt="Truecaller">
+                                </a>
+                            </div>
+                            <div class="mt-6">
+                                <div class="flex flex-wrap -mx-3">
+                                    <div class="w-full max-w-full px-3 flex-0">
+                                        <div class="flex flex-col">
+                                            <div class="mb-4">
+                                                <h6 class="mb-1 text-sm font-bold dark:text-white text-center border-t border-b border-gray-200 py-2">معلومات الاتصال</h6>
+                                                <div class="info-row">
+                                                    <i class="fas fa-phone"></i>
+                                                <input type="tel" id="client-phone" name="Phone" value="@Model.Phone" />
+                                                </div>
+                                               @*  <div class="info-row">
+                                                    <i class="fas fa-envelope"></i>
+                                                    <input type="email" id="client-email" name="client-email" value="@Model.emai" />
+                                                </div> *@
+                                            </div>
+                                            <div class="mb-4">
+                                                <h6 class="mb-1 text-sm font-bold dark:text-white text-center border-t border-b border-gray-200 py-2">المشروع المهتم به</h6>
+                                                <div class="info-row">
+                                                    <i class="fas fa-building"></i>
+@*                                                 <input type="text" id="client-project-interest" name="ProjectId" value="@Model.Project.Name" />
+ *@@* 
+                                                <select value="@Model.Project.Name" name="ProjectId" required
+                                                        style="width:100%; border:1px solid #ddd; border-radius:7px; padding:7px 10px; background:#fff;"
+                                                        asp-items="ViewBag.Projects">
+                                                    <option value="">اختر مشروعًا...</option>
+                                                </select>
+ *@
+                                                <select asp-for="ProjectId" class="form-control" asp-items="ViewBag.ProjectId"></select>
+
+
+                                                </div>
+                                            </div>
+                                        <div class="mb-4">
+                                            <h6 class="mb-1 text-sm font-bold dark:text-white text-center border-t border-b border-gray-200 py-2">المصدر</h6>
+                                            <div class="info-row">
+                                                <i class="fas fa-user-plus"></i>
+                                                <select id="client-source" name="Source"
+                                                        style="width:100%; border:1px solid #ddd; border-radius:7px; padding:7px 10px; background:#fff;">
+                                                    @foreach (var source in new[] { "اختر المصدر...", "فيس بوك", "بايوت", "دوبزل", "واتساب", "موقع إلكتروني", "إحالة" })
+                                                    {
+                                                        var value = source == "اختر المصدر..." ? "" : source;
+                                                        if (Model.Source == value)
+                                                        {
+                                                            <option value="@value" selected>@source</option>
+                                                        }
+                                                        else
+                                                        {
+                                                            <option value="@value">@source</option>
+                                                        }
+                                                    }
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="w-full max-w-full px-3 lg:w-4/12 lg:flex-none">
+                    <div class="relative flex flex-col min-w-0 break-words bg-white border-0 shadow-xl dark:bg-slate-850 dark:shadow-dark-xl rounded-2xl bg-clip-border">
+                        <div class="flex-auto p-4">
+                            <h6 class="mb-3 text-sm font-bold dark:text-white text-center border-t border-b border-gray-200 py-2">ملاحظات العميل</h6>
+                            <div class="mb-4">
+                                <div class="info-row" style="display: block;">
+                                <textarea id="client-notes" name="Notes" placeholder="ملاحظات إضافية حول العميل" class="w-full" style="text-align: right;">@Model.Notes</textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="relative flex flex-col min-w-0 break-words bg-white border-0 shadow-xl dark:bg-slate-850 dark:shadow-dark-xl rounded-2xl bg-clip-border mt-4">
+                        <div class="flex-auto p-4">
+                            <h6 class="mb-3 text-sm font-bold dark:text-white text-center border-t border-b border-gray-200 py-2">إجراءات</h6>
+                            <div class="flex flex-col gap-2">
+                                <button type="submit" class="action-button save-button">
+                                    <i class="fas fa-save mr-2"></i>
+                                    حفظ التغييرات
+                                </button>
+                                <button type="button" class="action-button cancel-button" onclick="history.back()">
+                                    <i class="fas fa-times mr-2"></i>
+                                    إلغاء
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<style>
+    /* Custom styles */
+    .rounded-2xl {
+        border-radius: 1rem;
+    }
+
+    .text-size-sm {
+        font-size: 0.875rem;
+    }
+
+    /* Quick contact buttons (retained for consistency, but might be less relevant for editing) */
+    .contact-icon-container {
+        display: flex;
+        gap: 20px;
+        justify-content: center;
+        align-items: center;
+        margin-top: 1rem;
+    }
+
+    .contact-icon-button {
+        width: 31.5px;
+        height: 31.5px;
+        border-radius: 50%;
+        background-color: #ffffff;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: transform 0.3s ease;
+        opacity: 0.5; /* Dim them as they are not functional on this page */
+        cursor: not-allowed;
+    }
+
+        .contact-icon-button img {
+            width: 18px;
+            height: 18px;
+            object-fit: contain;
+        }
+
+        .contact-icon-button .fa-solid {
+            font-size: 18px;
+            color: #6b7280;
+        }
+
+    /* Form specific styles for input fields */
+    .info-row {
+        display: flex;
+        align-items: center;
+        justify-content: center; /* Center the content within the row */
+        margin-top: 0.5rem;
+    }
+
+        .info-row i {
+            margin-left: 0.5rem; /* Space between icon and input */
+            color: #6b7280; /* Adjust icon color */
+        }
+
+        .info-row input[type="text"],
+        .info-row input[type="email"],
+        .info-row input[type="tel"],
+        .info-row input[type="date"],
+        .info-row textarea,
+        .info-row select,
+        .info-row .display-value {
+            flex-grow: 1; /* Allow input/span to take available space */
+            padding: 0.5rem;
+            border: 1px solid #ddd;
+            border-radius: 0.4rem;
+            font-size: 0.9rem;
+            text-align: right;
+            background-color: #f9f9f9; /* Light background for inputs */
+            color: #333;
+        }
+
+        .info-row textarea {
+            min-height: 80px; /* Adjust as needed */
+            resize: vertical;
+        }
+
+    /* Styles for the "status" dropdown to match the larger name style */
+    .profile-header-status select {
+        font-weight: 600; /* Bolder */
+        color: #4a5568; /* Slightly darker grey */
+        font-size: 0.95rem; /* Slightly larger text */
+        border: none; /* Remove border */
+        background: transparent; /* Transparent background */
+        padding: 0;
+        width: 100%; /* Ensure it takes full width of its container */
+        text-align: right; /* Align text to the right */
+    }
+    /* Ensure default arrow is hidden if custom arrow is desired, or let browser handle */
+    .profile-header-status select {
+        -webkit-appearance: none; /* Remove default browser styling */
+        -moz-appearance: none;
+        appearance: none;
+        background-image: url('data:image/svg+xml;utf8,<svg fill="%236b7280" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/><path d="M0 0h24v24H0z" fill="none"/></svg>'); /* Custom arrow icon */
+        background-repeat: no-repeat;
+        background-position: left 0.5rem center; /* Position the arrow on the left */
+        padding-left: 1.5rem; /* Make space for the arrow */
+    }
+
+
+    /* Action buttons */
+    .action-button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 6px;
+        padding: 10px 20px;
+        border-radius: 0.5rem;
+        font-weight: 600;
+        transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        text-decoration: none;
+        color: #fff;
+        font-size: 0.9rem;
+        width: 100%;
+        margin-bottom: 0.5rem; /* Space between buttons */
+    }
+
+        .action-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+
+    .save-button {
+        background-color: #28a745; /* Green */
+    }
+
+        .save-button:hover {
+            background-color: #218838;
+        }
+
+    .cancel-button {
+        background-color: #dc3545; /* Red */
+    }
+
+        .cancel-button:hover {
+            background-color: #c82333;
+        }
+
+    /* تنسيقات إضافية */
+    .rounded-2xl {
+        border-radius: 1rem;
+    }
+
+    .text-size-sm {
+        font-size: 0.875rem;
+    }
+
+    /* تنسيق أزرار التواصل السريع */
+    .contact-icon-container { /* Changed from .icon-container to .contact-icon-container for consistency with employee pages */
+        display: flex;
+        gap: 20px;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .contact-icon-button { /* Changed from .icon-button to .contact-icon-button for consistency with employee pages */
+        width: 31.5px;
+        height: 31.5px;
+        border-radius: 50%;
+        background-color: #ffffff;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: transform 0.3s ease;
+        opacity: 0.5; /* Dim them as they are not functional on this page */
+        cursor: not-allowed;
+    }
+
+        .contact-icon-button:hover {
+            transform: scale(1.1);
+        }
+
+        .contact-icon-button img {
+            width: 18px;
+            height: 18px;
+            object-fit: contain;
+        }
+
+            .contact-icon-button img.whatsapp-icon {
+                border-radius: 50%;
+            }
+
+    /* Form specific styles for input fields (duplicated from above for clarity, but ideally in a single style block) */
+    .info-row {
+        display: flex;
+        align-items: center;
+        justify-content: center; /* Center the content within the row */
+        margin-top: 0.5rem;
+    }
+
+        .info-row i {
+            margin-left: 0.5rem; /* Space between icon and input */
+            color: #6b7280; /* Adjust icon color */
+        }
+
+        .info-row input[type="text"],
+        .info-row input[type="email"],
+        .info-row input[type="tel"],
+        .info-row input[type="date"],
+        .info-row textarea,
+        .info-row select,
+        .info-row .display-value {
+            flex-grow: 1; /* Allow input/span to take available space */
+            padding: 0.5rem;
+            border: 1px solid #ddd;
+            border-radius: 0.4rem;
+            font-size: 0.9rem;
+            text-align: right;
+            background-color: #f9f9f9; /* Light background for inputs */
+            color: #333;
+        }
+
+        .info-row textarea {
+            min-height: 80px; /* Adjust as needed */
+            resize: vertical;
+        }
+
+    /* Styles for the "status" dropdown to match the larger name style */
+    .profile-header-status select {
+        font-weight: 600; /* Bolder */
+        color: #4a5568; /* Slightly darker grey */
+        font-size: 0.95rem; /* Slightly larger text */
+        border: none; /* Remove border */
+        background: transparent; /* Transparent background */
+        padding: 0;
+        width: 100%; /* Ensure it takes full width of its container */
+        text-align: right; /* Align text to the right */
+    }
+    /* Ensure default arrow is hidden if custom arrow is desired, or let browser handle */
+    .profile-header-status select {
+        -webkit-appearance: none; /* Remove default browser styling */
+        -moz-appearance: none;
+        appearance: none;
+        background-image: url('data:image/svg+xml;utf8,<svg fill="%236b7280" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/><path d="M0 0h24v24H0z" fill="none"/></svg>'); /* Custom arrow icon */
+        background-repeat: no-repeat;
+        background-position: left 0.5rem center; /* Position the arrow on the left */
+        padding-left: 1.5rem; /* Make space for the arrow */
+    }
+
+
+    /* تنسيق أزرار الإجراءات */
+    .action-button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 6px;
+        padding: 10px 20px; /* Increased padding for better clickability */
+        border-radius: 0.5rem;
+        font-weight: 600;
+        transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        text-decoration: none;
+        color: #fff;
+        font-size: 0.9rem; /* Slightly larger font size */
+        width: 100%; /* Make buttons full width */
+        margin-bottom: 0.5rem; /* Space between buttons */
+    }
+
+        .action-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+
+    .save-button { /* New class for save button */
+        background-color: #28a745; /* Green */
+    }
+
+        .save-button:hover {
+            background-color: #218838;
+        }
+
+    .cancel-button { /* New class for cancel button */
+        background-color: #dc3545; /* Red */
+    }
+
+        .cancel-button:hover {
+            background-color: #c82333;
+        }
+</style>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

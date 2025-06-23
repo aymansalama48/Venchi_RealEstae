@@ -1,0 +1,336 @@
+﻿@{
+    Layout = null;
+}
+
+
+
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/png" href="../img/venchiLogo.png" />
+    <title>تسجيل الدخول - Venchi</title>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <!-- Nucleo Icons -->
+    <link href="../assets/css/nucleo-icons.css" rel="stylesheet" />
+    <link href="../assets/css/nucleo-svg.css" rel="stylesheet" />
+    <!-- Popper -->
+    <!-- Main Styling -->
+    <link href="../assets/css/argon-dashboard-tailwind.css?v=1.0.1" rel="stylesheet" />
+    <style>
+        /* Custom RTL adjustments for the layout */
+        body {
+            font-family: 'Tajawal', 'Open Sans', sans-serif !important;
+            direction: rtl; /* Ensure overall RTL direction */
+            text-align: right; /* Default text alignment for RTL */
+        }
+
+        /* General RTL adjustments for Tailwind classes */
+        [dir="rtl"] .text-start {
+            text-align: right !important;
+        }
+
+        [dir="rtl"] .text-end {
+            text-align: left !important;
+        }
+
+        [dir="rtl"] .text-left {
+            text-align: right !important;
+        }
+
+        [dir="rtl"] .text-right {
+            text-align: left !important;
+        }
+
+        [dir="rtl"] .float-left {
+            float: right !important;
+        }
+
+        [dir="rtl"] .float-right {
+            float: left !important;
+        }
+
+        /* Correcting horizontal margins */
+        [dir="rtl"] .ml-auto {
+            margin-left: auto !important;
+            margin-right: 0 !important;
+        }
+
+        [dir="rtl"] .mr-auto {
+            margin-right: auto !important;
+            margin-left: 0 !important;
+        }
+
+        [dir="rtl"] .mx-auto {
+            margin-left: auto !important;
+            margin-right: auto !important;
+        }
+        /* Center auto for RTL */
+
+        /* Basic margin/padding swaps */
+        [dir="rtl"] .ml-1 {
+            margin-left: 0 !important;
+            margin-right: 0.25rem !important;
+        }
+
+        [dir="rtl"] .mr-1 {
+            margin-right: 0 !important;
+            margin-left: 0.25rem !important;
+        }
+
+        [dir="rtl"] .ml-2 {
+            margin-left: 0 !important;
+            margin-right: 0.5rem !important;
+        }
+
+        [dir="rtl"] .mr-2 {
+            margin-right: 0 !important;
+            margin-left: 0.5rem !important;
+        }
+
+        [dir="rtl"] .ml-4 {
+            margin-left: 0 !important;
+            margin-right: 1rem !important;
+        }
+
+        [dir="rtl"] .mr-4 {
+            margin-right: 0 !important;
+            margin-left: 1rem !important;
+        }
+
+        [dir="rtl"] .-mx-3 {
+            margin-left: 0 !important;
+            margin-right: 0 !important;
+        }
+        /* Important for container */
+        [dir="rtl"] .px-3 {
+            padding-left: 0.75rem !important;
+            padding-right: 0.75rem !important;
+        }
+
+        [dir="rtl"] .px-4 {
+            padding-left: 1rem !important;
+            padding-right: 1rem !important;
+        }
+
+        [dir="rtl"] .px-6 {
+            padding-left: 1.5rem !important;
+            padding-right: 1.5rem !important;
+        }
+
+        [dir="rtl"] .pr-0 {
+            padding-right: 0 !important;
+            padding-left: 0 !important;
+        }
+
+        [dir="rtl"] .pl-0 {
+            padding-left: 0 !important;
+            padding-right: 0 !important;
+        }
+
+
+        /* Specific Layout Adjustments */
+        [dir="rtl"] .lg\:ml-0 { /* For the brand logo margin */
+            margin-left: 0 !important;
+            margin-right: 1.5rem !important; /* Adjusted for better spacing */
+        }
+
+        [dir="rtl"] .xl\:ml-auto { /* For Navbar items on larger screens */
+            margin-left: auto !important;
+            margin-right: 0 !important;
+        }
+
+        /* --- CRITICAL RTL LAYOUT ADJUSTMENTS --- */
+
+        /* The main container for the two columns - this reverses their order */
+        [dir="rtl"] .flex-wrap {
+            flex-direction: row-reverse !important; /* Ensures form is on the right, image on the left */
+        }
+
+        /* Form Column: Ensure it takes its place on the RIGHT */
+        [dir="rtl"] .flex-col.w-full.max-w-full.px-3.mx-auto.lg\:mx-0 {
+            /* These classes are already defining its width (md:w-7/12 lg:w-5/12 xl:w-4/12) */
+            order: 1 !important; /* Forces it to appear first visually (on the right in RTL) */
+            margin-right: auto !important; /* Pushes it to the very right */
+            margin-left: 0 !important; /* Removes any default left margin */
+        }
+
+        /* Image Column: Ensure it takes its place on the LEFT */
+        [dir="rtl"] .absolute.top-0.right-0.flex-col.justify-center.hidden.w-6\/12.h-full {
+            right: auto !important; /* Override original 'right: 0' */
+            left: 0 !important; /* Position it explicitly on the left */
+            padding-left: 3rem !important; /* Add necessary padding on the left side */
+            padding-right: 0 !important; /* Remove any original right padding */
+            overflow: hidden !important; /* Prevent image content from overflowing */
+            order: 2 !important; /* Forces it to appear second visually (on the left in RTL) */
+        }
+
+        /* Adjust padding inside the image column, if any specific px-24 is used */
+        [dir="rtl"] .lg\:px-24 {
+            padding-right: 6rem !important; /* Adjust if the image content needs more right padding */
+            padding-left: 0 !important;
+        }
+
+
+        /* Form Input and Checkbox Adjustments */
+        [dir="rtl"] input[type="email"],
+        [dir="rtl"] input[type="password"],
+        [dir="rtl"] input[type="text"],
+        [dir="rtl"] input[type="number"],
+        [dir="rtl"] textarea {
+            text-align: right !important; /* Ensure text inputs are right-aligned */
+        }
+
+        [dir="rtl"] input::placeholder {
+            text-align: right !important; /* Placeholder text also right-aligned */
+        }
+
+        [dir="rtl"] .p-6.pb-0.mb-0 { /* Header of the form box */
+            text-align: right !important;
+        }
+        /* Checkbox specific adjustments */
+        [dir="rtl"] .pl-12 { /* Checkbox and label container - adjust padding */
+            padding-left: 0 !important;
+            padding-right: 3rem !important; /* Matches original visual offset for the checkbox itself */
+        }
+
+        [dir="rtl"] .-ml-12 { /* Checkbox positioning relative to its container */
+            margin-left: 0 !important;
+            margin-right: -3rem !important; /* Move the checkbox to the right within its padding */
+        }
+
+        [dir="rtl"] .float-left {
+            float: right !important; /* Ensure checkbox itself aligns right */
+        }
+
+        [dir="rtl"] .ml-2 { /* Label next to checkbox */
+            margin-left: 0 !important;
+            margin-right: 0.5rem !important; /* Keep a small gap between checkbox and label */
+        }
+
+        [dir="rtl"] .bg-left { /* For checkbox background icon */
+            background-position: right !important;
+        }
+
+        [dir="rtl"] .bg-right { /* For checkbox background icon when checked */
+            background-position: left !important;
+        }
+        /* Ensure the 'Remember me' checkbox's inner circle moves correctly for RTL */
+        [dir="rtl"] .checked\:after\:translate-x-5\.3 {
+            transform: translateX(-5.3rem) !important; /* Correct translation for RTL */
+        }
+
+        [dir="rtl"] .after\:translate-x-px {
+            transform: translateX(0) !important; /* Reset default transform for the unchecked state */
+        }
+
+    </style>
+</head>
+
+<body class="m-0 font-sans antialiased font-normal bg-white text-start text-base leading-default text-slate-500">
+    <div class="container sticky top-0 z-sticky">
+        <div class="flex flex-wrap -mx-3">
+            <div class="w-full max-w-full px-3 flex-0">
+
+
+
+
+
+                <nav class="absolute top-0 left-0 right-0 z-30 flex flex-wrap items-center px-4 py-2 m-6 mb-0 shadow-sm rounded-xl bg-white/80 backdrop-blur-2xl backdrop-saturate-200 lg:flex-nowrap lg:justify-start">
+                    <div class="flex items-center justify-center w-full p-0 px-6 mx-auto">
+                        <a class="py-1.75 text-sm whitespace-nowrap font-bold text-slate-700" asp-action="sign_in">
+                            <img src="../img/venchiLogo.png" class="inline h-full max-w-full transition-all duration-200 ease-nav-brand max-h-8" alt="main_logo" />
+                            <span class="mr-1 font-semibold transition-all duration-200 dark:text-white ease-nav-brand">Venchi Real Estate </span>
+                        </a>
+                    </div>
+                </nav>
+
+
+
+
+
+
+
+
+            </div>
+        </div>
+    </div>
+    <main class="mt-0 transition-all duration-200 ease-in-out">
+        <section>
+            <div class="relative flex items-center min-h-screen p-0 overflow-hidden bg-center bg-cover">
+                <div class="container z-1">
+                    <div class="flex flex-wrap -mx-3">
+                        <div class="flex flex-col w-full max-w-full px-3 shrink-0 md:flex-0 md:w-7/12 lg:w-5/12 xl:w-4/12 ml-auto">
+                            <div class="relative flex flex-col min-w-0 break-words bg-transparent border-0 shadow-none lg:py4 dark:bg-gray-950 rounded-2xl bg-clip-border">
+                                <div class="p-6 pb-0 mb-0 text-right">
+                                    <h4 class="font-bold">تسجيل الدخول</h4>
+                                    <p class="mb-0">أدخل بريدك الإلكتروني وكلمة المرور لتسجيل الدخول</p>
+                                </div>
+
+
+                                <div class="flex-auto p-6">
+                                    <form asp-action="Login" asp-controller="Login" method="post">
+                                        <div class="mb-4">
+                                            <input type="email" name="Email" placeholder="البريد الإلكتروني" class="focus:shadow-primary-outline dark:bg-gray-950 dark:placeholder:text-white/80 dark:text-white/80 text-sm leading-5.6 ease block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding p-3 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-fuchsia-300 focus:outline-none" required>
+                                        </div>
+                                        <div class="mb-4">
+                                            <input type="password" name="PasswordHash" placeholder="كلمة المرور" class="focus:shadow-primary-outline dark:bg-gray-950 dark:placeholder:text-white/80 dark:text-white/80 text-sm leading-5.6 ease block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding p-3 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-fuchsia-300 focus:outline-none" required>
+                                        </div>
+
+                                        @if (!ViewData.ModelState.IsValid)
+                                        {
+                                            foreach (var error in ViewData.ModelState.Values.SelectMany(v => v.Errors))
+                                            {
+                                                <div class="mb-4 p-3 text-red-600 bg-red-100 border border-red-300 rounded-lg text-sm">
+                                                    @error.ErrorMessage
+                                                </div>
+                                            }
+                                        }
+
+
+
+                                        <div class="text-center">
+                                            <button type="submit" class="inline-block w-full px-16 py-3.5 mt-6 mb-0 font-bold leading-normal text-center text-white align-middle transition-all bg-blue-500 border-0 rounded-lg cursor-pointer hover:-translate-y-px active:opacity-85 hover:shadow-xs text-sm ease-in tracking-tight-rem shadow-md bg-150 bg-x-25">تسجيل الدخول</button>
+                                        </div>
+                                    </form>
+                                </div>
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="absolute top-0 right-0 flex-col justify-center hidden w-6/12 h-full max-w-full px-3 pr-0 my-auto text-center flex-0 lg:flex">
+                    <div class="relative flex flex-col justify-center h-full bg-cover px-24 m-4 overflow-hidden bg-[url('https://raw.githubusercontent.com/creativetimofficial/public-assets/master/argon-dashboard-pro/assets/img/signin-ill.jpg')] rounded-xl ">
+                        <span class="absolute top-0 left-0 w-full h-full bg-center bg-cover bg-gradient-to-tl from-blue-500 to-violet-500 opacity-60"></span>
+                        <h4 class="z-20 mt-12 font-bold text-white">"Venchi"</h4>
+                        <p class="z-20 text-white">أهلاً بك في مركز التحكم، انطلق بإدارة مشاريعك وتتبع العملاء واتخذ قراراتك بثقة ووضوح.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer class="py-12">
+
+        <div class="flex flex-wrap -mx-3">
+            <div class="w-8/12 max-w-full px-3 mx-auto mt-1 text-center flex-0">
+                <p class="mb-0 text-slate-400">
+                    حقوق النشر ©
+                    <script>
+                        document.write(new Date().getFullYear());
+                    </script>
+                    Ayman Salama. جميع الحقوق محفوظة.
+                </p>
+            </div>
+        </div>
+        </div>
+    </footer>
+</body>
+<script src="../assets/js/plugins/perfect-scrollbar.min.js" async></script>
+<script src="../assets/js/argon-dashboard-tailwind.js?v=1.0.1" async></script>
+</html>

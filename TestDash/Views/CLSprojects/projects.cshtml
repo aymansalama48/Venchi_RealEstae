@@ -1,0 +1,884 @@
+﻿@model List<TestDash.Models.CLSproject>
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+    <!-- Navbar -->
+    <nav class="relative flex flex-wrap items-center justify-between px-0 py-2 mx-6 transition-all ease-in shadow-none duration-250 rounded-2xl lg:flex-nowrap lg:justify-start" navbar-main navbar-scroll="false">
+        <div class="flex items-center justify-between w-full px-4 py-1 mx-auto flex-wrap-inherit">
+            <nav>
+                <ol class="flex flex-wrap pt-1 bg-transparent rounded-lg">
+                    <li class="pl-2 text-sm leading-normal">
+                        <a class="text-white opacity-50" href="javascript:;">لوحة التحكم</a>
+                    </li>
+                    <li class="text-sm pl-2 capitalize leading-normal text-white before:float-right before:pl-2 before:text-gray-600 before:content-['/']" aria-current="page">المشاريع</li>
+                </ol>
+                <h6 class="mb-0 font-bold text-white capitalize dark:text-white">المشاريع الخاصة بنا</h6>
+            </nav>
+            <!-- breadcrumb -->
+
+
+
+
+            <div class="flex items-center mt-2 grow sm:mt-0 md:mr-0 lg:flex lg:basis-auto">
+                <div class="flex items-center md:ml-auto md:pr-4">
+                </div>
+                <ul class="flex flex-row justify-end pl-0 pr-10 mb-0 ml-0 mr-auto list-none md-max:w-full">
+
+                    <li class="flex items-center pr-4 xl:hidden">
+                        <a href="javascript:;" class="block p-0 text-sm text-white transition-all ease-nav-brand" sidenav-trigger>
+                            <div class="w-4.5 overflow-hidden">
+                                <i class="ease mb-0.75 relative block h-0.5 rounded-sm bg-white transition-all"></i>
+                                <i class="ease mb-0.75 relative block h-0.5 rounded-sm bg-white transition-all"></i>
+                                <i class="ease relative block h-0.5 rounded-sm bg-white transition-all"></i>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="flex items-center px-4">
+                        <a href="javascript:;" class="p-0 text-sm text-white transition-all ease-nav-brand">
+                            <i fixed-plugin-button-nav class="cursor-pointer fa fa-cog" aria-hidden="true"></i>
+                            <!-- fixed-plugin-button-nav  -->
+                        </a>
+                    </li>
+
+                    <!-- notifications -->
+
+                    <li class="relative flex items-center pl-2">
+                        <p class="hidden transform-dropdown-show"></p>
+                        <a dropdown-trigger href="javascript:;" class="block p-0 text-sm text-white transition-all ease-nav-brand" aria-expanded="false">
+                            <i class="cursor-pointer fa fa-bell" aria-hidden="true"></i>
+                        </a>
+
+                        <ul dropdown-menu class="text-sm dark:bg-slate-850 dark:shadow-dark-xl transform-dropdown before:font-awesome before:leading-default before:duration-350 before:ease lg:shadow-3xl duration-250 min-w-44 before:text-5.5 pointer-events-none absolute left-0 top-0 z-50 origin-top list-none rounded-lg border-0 border-solid border-transparent bg-white bg-clip-padding px-2 py-4 text-left text-slate-500 opacity-0 transition-all before:absolute before:right-auto before:top-0 before:left-2 before:z-50 before:inline-block before:font-normal before:text-white before:antialiased before:transition-all before:content-['\f0d8'] sm:-mr-6 before:sm:left-3 lg:absolute lg:mt-2 lg:block lg:cursor-pointer">
+                            <!-- add show class on dropdown open js -->
+                            <li class="relative mb-2">
+                                <a class="ease py-1.2 clear-both block w-full whitespace-nowrap rounded-lg bg-transparent px-4 duration-300 dark:hover:bg-slate-900 hover:bg-gray-200 hover:text-slate-700 lg:transition-colors" href="javascript:;">
+                                    <div class="flex py-1">
+                                        <div class="my-auto">
+                                            <img src="../assets/img/team-2.jpg" class="inline-flex items-center justify-center ml-4 text-sm text-white h-9 w-9 max-w-none rounded-xl" />
+                                        </div>
+                                        <div class="flex flex-col justify-center">
+                                            <h6 class="mb-1 text-sm font-normal leading-normal dark:text-white"><span class="font-semibold">رسالة جديدة</span> من لور</h6>
+                                            <p class="mb-0 ml-auto text-xs leading-tight text-slate-400">
+                                                <i class="ml-1 fa fa-clock" aria-hidden="true"></i>
+                                                منذ 13 دقيقة
+                                            </p>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+
+                            <li class="relative mb-2">
+                                <a class="ease py-1.2 clear-both block w-full whitespace-nowrap rounded-lg px-4 transition-colors duration-300 dark:hover:bg-slate-900 hover:bg-gray-200 hover:text-slate-700" href="javascript:;">
+                                    <div class="flex py-1">
+                                        <div class="my-auto">
+                                            <img src="../assets/img/small-logos/logo-spotify.svg" class="inline-flex items-center justify-center ml-4 text-sm text-white bg-gradient-to-tl from-zinc-800 to-zinc-700 dark:bg-gradient-to-tl dark:from-slate-750 dark:to-gray-850 h-9 w-9 max-w-none rounded-xl" />
+                                        </div>
+                                        <div class="flex flex-col justify-center">
+                                            <h6 class="mb-1 text-sm font-normal leading-normal dark:text-white"><span class="font-semibold">البوم جديد</span> بواسطة ترافيس سكوت</h6>
+                                            <p class="mb-0 ml-auto text-xs leading-tight text-slate-400">
+                                                <i class="ml-1 fa fa-clock" aria-hidden="true"></i>
+                                                يوم 1
+                                            </p>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+
+                            <li class="relative">
+                                <a class="ease py-1.2 clear-both block w-full whitespace-nowrap rounded-lg px-4 transition-colors duration-300 dark:hover:bg-slate-900 hover:bg-gray-200 hover:text-slate-700" href="javascript:;">
+                                    <div class="flex py-1">
+                                        <div class="inline-flex items-center justify-center my-auto ml-4 text-sm text-white transition-all duration-200 ease-nav-brand bg-gradient-to-tl from-slate-600 to-slate-300 h-9 w-9 rounded-xl">
+                                            <svg width="12px" height="12px" viewBox="0 0 43 36" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                                                <title>credit-card</title>
+                                                <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                                    <g transform="translate(-2169.000000, -745.000000)" fill="#FFFFFF" fill-rule="nonzero">
+                                                        <g transform="translate(1716.000000, 291.000000)">
+                                                            <g transform="translate(453.000000, 454.000000)">
+                                                                <path class="color-background" d="M43,10.7482083 L43,3.58333333 C43,1.60354167 41.3964583,0 39.4166667,0 L3.58333333,0 C1.60354167,0 0,1.60354167 0,3.58333333 L0,10.7482083 L43,10.7482083 Z" opacity="0.593633743"></path>
+                                                                <path class="color-background" d="M0,16.125 L0,32.25 C0,34.2297917 1.60354167,35.8333333 3.58333333,35.8333333 L39.4166667,35.8333333 C41.3964583,35.8333333 43,34.2297917 43,32.25 L43,16.125 L0,16.125 Z M19.7083333,26.875 L7.16666667,26.875 L7.16666667,23.2916667 L19.7083333,23.2916667 L19.7083333,26.875 Z M35.8333333,26.875 L28.6666667,26.875 L28.6666667,23.2916667 L35.8333333,23.2916667 L35.8333333,26.875 Z"></path>
+                                                            </g>
+                                                        </g>
+                                                    </g>
+                                                </g>
+                                            </svg>
+                                        </div>
+                                        <div class="flex flex-col justify-center">
+                                            <h6 class="mb-1 text-sm font-normal leading-normal dark:text-white">اكتمل الدفع بنجاح</h6>
+                                            <p class="mb-0 ml-auto text-xs leading-tight text-slate-400">
+                                                <i class="ml-1 fa fa-clock" aria-hidden="true"></i>
+                                                2 أيام
+                                            </p>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+
+
+
+
+
+        </div>
+
+
+    </nav>
+
+    <!-- end Navbar -->
+<center>
+
+    <div class="A3_Intro">
+
+        <h2 style="font-size: 30px; color: black;"> مشاريعنا العقارية</h2>
+
+
+
+        <h2 style="font-size: 20px; color:black ">
+            هذه الصفحة تعرض جميع المشاريع العقارية التي تم إضافتها إلى النظام، مع إمكانية متابعة تفاصيل كل مشروع.
+        </h2>
+    </div>
+</center>
+<style>
+    .A3_Intro {
+        display: inline-block; /* ياخد عرض المحتوى فقط */
+        text-align: center;
+        font-size: 25px;
+        margin: 30px auto; /* ⬅️ توسيط أفقي */
+        color: #000;
+        padding: 10px 20px;
+        background-color: rgba(255, 255, 255, 0.788);
+        border-radius: 100px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        font-weight: bold;
+    }
+
+    @@media (max-width: 600px) {
+        .A3_Intro {
+            font-size: 16px;
+            border-radius: 30px;
+            padding: 8px 16px;
+        }
+    }
+</style>
+
+
+
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@500;700&display=swap" rel="stylesheet">
+
+<div class="flex justify-center mb-8">
+    <button class="button" onclick="openAddModal()">
+        <div>
+            <div>
+                <div style="font-family: 'Amiri', serif; font-weight: bold;">إضافة مشروع جديد</div>
+            </div>
+        </div>
+    </button>
+</div>
+
+
+
+    <style>
+        /* From Uiverse.io by augustin_4687 */
+        .button {
+            --stone-50: #fafaf9;
+            --stone-800: #292524;
+            --yellow-400: #facc15;
+            font-family: "Rubik", sans-serif;
+            cursor: pointer;
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            line-height: 1;
+            font-size: 1rem;
+            border-radius: 1rem;
+            outline: 2px solid transparent;
+            outline-offset: 6px;
+            color: var(--stone-50);
+            &:active
+
+        {
+            outline-color: var(--yellow-400);
+        }
+
+        &:focus-visible {
+            outline-color: var(--yellow-400);
+            outline-style: dashed;
+        }
+
+        &::before {
+            content: "";
+            position: absolute;
+            z-index: 0;
+            height: 200%;
+            max-height: 100px;
+            aspect-ratio: 1;
+            margin: auto;
+            background: white;
+            clip-path: polygon( 100% 50%, 91.48% 56.57%, 97.55% 65.45%, 87.42% 69.07%, 90.45% 79.39%, 79.7% 79.7%, 79.39% 90.45%, 69.07% 87.42%, 65.45% 97.55%, 56.57% 91.48%, 50% 100%, 43.43% 91.48%, 34.55% 97.55%, 30.93% 87.42%, 20.61% 90.45%, 20.3% 79.7%, 9.55% 79.39%, 12.58% 69.07%, 2.45% 65.45%, 8.52% 56.57%, 0% 50%, 8.52% 43.43%, 2.45% 34.55%, 12.58% 30.93%, 9.55% 20.61%, 20.3% 20.3%, 20.61% 9.55%, 30.93% 12.58%, 34.55% 2.45%, 43.43% 8.52%, 50% 0%, 56.57% 8.52%, 65.45% 2.45%, 69.07% 12.58%, 79.39% 9.55%, 79.7% 20.3%, 90.45% 20.61%, 87.42% 30.93%, 97.55% 34.55%, 91.48% 43.43% );
+            animation: star-rotate 4s linear infinite;
+            opacity: 0.1;
+        }
+
+        &:hover::before {
+            opacity: 1;
+        }
+
+        & > div {
+            padding: 2px;
+            border-radius: 1rem;
+            background-color: var(--yellow-400);
+            transform: translate(-4px, -4px);
+            transition: all 150ms ease;
+            box-shadow: 0.5px 0.5px 0 0 var(--yellow-400), 1px 1px 0 0 var(--yellow-400), 1.5px 1.5px 0 0 var(--yellow-400), 2px 2px 0 0 var(--yellow-400), 2.5px 2.5px 0 0 var(--yellow-400), 3px 3px 0 0 var(--yellow-400), 0 0 0 2px var(--stone-800), 0.5px 0.5px 0 2px var(--stone-800), 1px 1px 0 2px var(--stone-800), 1.5px 1.5px 0 2px var(--stone-800), 2px 2px 0 2px var(--stone-800), 2.5px 2.5px 0 2px var(--stone-800), 3px 3px 0 2px var(--stone-800), 3.5px 3.5px 0 2px var(--stone-800), 4px 4px 0 2px var(--stone-800), 0 0 0 4px var(--stone-50), 0.5px 0.5px 0 4px var(--stone-50), 1px 1px 0 4px var(--stone-50), 1.5px 1.5px 0 4px var(--stone-50), 2px 2px 0 4px var(--stone-50), 2.5px 2.5px 0 4px var(--stone-50), 3px 3px 0 4px var(--stone-50), 3.5px 3.5px 0 4px var(--stone-50), 4px 4px 0 4px var(--stone-50);
+            .button:hover &
+
+        {
+            transform: translate(0, 0);
+            box-shadow: 0 0 0 0 var(--yellow-400), 0 0 0 0 var(--yellow-400), 0 0 0 0 var(--yellow-400), 0 0 0 0 var(--yellow-400), 0 0 0 0 var(--yellow-400), 0 0 0 0 var(--yellow-400), 0 0 0 2px var(--stone-800), 0 0 0 2px var(--stone-800), 0 0 0 2px var(--stone-800), 0 0 0 2px var(--stone-800), 0 0 0 2px var(--stone-800), 0 0 0 2px var(--stone-800), 0 0 0 2px var(--stone-800), 0 0 0 2px var(--stone-800), 0 0 0 2px var(--stone-800), 0 0 0 4px var(--stone-50), 0 0 0 4px var(--stone-50), 0 0 0 4px var(--stone-50), 0 0 0 4px var(--stone-50), 0 0 0 4px var(--stone-50), 0 0 0 4px var(--stone-50), 0 0 0 4px var(--stone-50), 0 0 0 4px var(--stone-50), 0 0 0 4px var(--stone-50);
+        }
+
+        & > div {
+            position: relative;
+            pointer-events: none;
+            border-radius: calc(1rem - 2px);
+            background-color: var(--stone-800);
+            &::before
+
+        {
+            content: "";
+            position: absolute;
+            inset: 0;
+            border-radius: 1rem;
+            opacity: 0.1;
+            background-image: radial-gradient( rgb(255 255 255 / 80%) 20%, transparent 20% ), radial-gradient(rgb(255 255 255 / 100%) 20%, transparent 20%);
+            background-position: 0 0, 4px 4px;
+            background-size: 8px 8px;
+            mix-blend-mode: hard-light;
+            box-shadow: inset 0 0 0 1px var(--stone-800);
+            animation: dots 0.4s infinite linear;
+            transition: opacity 150ms ease;
+        }
+
+        & > div {
+            position: relative;
+            display: flex;
+            align-items: center;
+            padding: 0.75rem 1.25rem;
+            gap: 0.25rem;
+            filter: drop-shadow(0 -1px 0 var(--stone-800));
+            &:hover
+
+        {
+            filter: drop-shadow(0 -1px 0 rgba(255, 255, 255, 0.1));
+        }
+
+        &:active {
+            transform: translateY(2px);
+        }
+
+        }
+        }
+        }
+        }
+
+        @@keyframes star-rotate {
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        @@keyframes dots {
+            0% {
+                background-position: 0 0, 4px 4px;
+            }
+
+            100% {
+                background-position: 8px 0, 12px 4px;
+            }
+        }
+
+        @@media (prefers-color-scheme: dark) {
+            .button {
+                &:active, &:focus-visible
+
+        {
+            outline-color: var(--yellow-400);
+        }
+
+        }
+        }
+    </style>
+
+
+<div class="w-full px-6 py-6 mx-auto">
+    <div class="flex flex-wrap justify-center -mx-3" id="projectsContainer">
+        @foreach (var project in Model)
+        {
+            <div class="w-full max-w-full px-3 mb-6 lg:w-4/12 md:w-6/12 sm:w-full project-item" data-project-id="@project.Id">
+                <div class="relative flex flex-col min-w-0 break-words bg-white shadow-xl dark:bg-slate-850 dark:shadow-dark-xl rounded-2xl bg-clip-border project-card">
+                    <div class="relative overflow-hidden rounded-t-2xl">
+                        <img class="w-full h-48 object-cover rounded-t-2xl project-image" src="@project.ImageUrl" alt="@project.Name" />
+                    </div>
+                    <div class="flex-auto p-4">
+                        <div class="text-xl font-bold mb-2 project-name">@project.Name</div>
+                        <div class="flex items-center text-sm mb-4">
+                            <i class="fas fa-map-marker-alt text-slate-400 ml-2"></i>
+                            <span class="project-location">الموقع: @project.Location</span>
+                        </div>
+                        <div class="project-buttons-container">
+                            <button class="project-button edit-button" onclick="openEditModal(this)" data-id="@project.Id" data-name="@project.Name" data-location="@project.Location" data-image="@project.ImageUrl">
+                                <i class="fas fa-edit"></i>
+                                تعديل
+                            </button>
+                            <button class="project-button delete-button" onclick="deleteProject(this)" data-id="@project.Id" data-name="@project.Name">
+                                <i class="fas fa-trash"></i>
+                                حذف
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+
+@*     ظظظظظظظظظظظظظظظظظظظظظظظظظظظظظظظظظظظظظظظظظظظظظظ
+ *@    <div id="editProjectModal" class="modal">
+        <div class="modal-content dark:bg-slate-850 dark:text-white">
+            <span class="close-button" onclick="closeEditModal()">&times;</span>
+            <h3 id="modalTitle" class="dark:text-white">تعديل المشروع</h3>
+        <form id="projectForm" method="post">
+                <input type="hidden" id="editProjectId">
+                <div>
+                    <label for="projectName">اسم المشروع:</label>
+                <input type="text" id="projectName" name="Name" required class="dark:bg-slate-700 dark:text-white dark:border-slate-600">
+                </div>
+                <div>
+                    <label for="projectLocation">الموقع:</label>
+                <input type="text" id="projectLocation" name="Location" required class="dark:bg-slate-700 dark:text-white dark:border-slate-600">
+                </div>
+                <div>
+                    <label for="projectImage">رابط الصورة (URL):</label>
+                <input type="text" id="projectImage" name="ImageUrl" placeholder="مثال: https://example.com/image.jpg" class="dark:bg-slate-700 dark:text-white dark:border-slate-600">
+                </div>
+
+                <div class="modal-buttons">
+                    <button type="submit" class="save-button" id="saveButton">حفظ</button>
+                    <button type="button" class="cancel-button" onclick="closeEditModal()">إلغاء</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div id="customAlertModal" class="custom-alert-modal">
+        <div class="custom-alert-content dark:bg-slate-850 dark:text-white">
+            <h4 id="customAlertTitle"></h4>
+            <p id="customAlertMessage"></p>
+            <div class="custom-alert-buttons">
+                <button id="customAlertOkButton" class="confirm-ok-button">موافق</button>
+                <button id="customAlertCancelButton" class="confirm-cancel-button" style="display: none;">إلغاء</button>
+            </div>
+        </div>
+    </div>
+
+
+
+
+<script>
+    // عناصر المودال
+    var modal = document.getElementById("editProjectModal");
+    var modalTitle = document.getElementById("modalTitle");
+    var saveButton = document.getElementById("saveButton");
+
+    function openEditModal(button) {
+        const projectCard = button.closest('.project-item');
+        const projectId = projectCard.dataset.projectId;
+        const projectName = projectCard.querySelector('.project-name').textContent;
+        const projectLocation = projectCard.querySelector('.project-location').textContent.replace('الموقع: ', '');
+        const projectImageSrc = projectCard.querySelector('.project-image').src;
+
+        modalTitle.textContent = "تعديل المشروع";
+        saveButton.textContent = "حفظ التغييرات";
+
+        document.getElementById('editProjectId').value = projectId;
+        document.getElementById('projectName').value = projectName;
+        document.getElementById('projectLocation').value = projectLocation;
+        document.getElementById('projectImage').value = projectImageSrc;
+
+        const form = document.getElementById('projectForm');
+        form.action = `/CLSprojects/Edit/${projectId}`;
+
+        modal.style.display = "flex";
+    }
+
+    function openAddModal() {
+        modalTitle.textContent = "إضافة مشروع جديد";
+        saveButton.textContent = "إضافة المشروع";
+
+        document.getElementById('editProjectId').value = '';
+        document.getElementById('projectName').value = '';
+        document.getElementById('projectLocation').value = '';
+        document.getElementById('projectImage').value = '';
+
+        const form = document.getElementById('projectForm');
+        form.action = "/CLSprojects/Create";
+
+        modal.style.display = "flex";
+    }
+
+    function closeEditModal() {
+        modal.style.display = "none";
+    }
+
+    // منع إغلاق المودال لما تضغط بره
+    // (تم حذف window.onclick)
+
+    document.getElementById('projectForm').addEventListener('submit', function (event) {
+        const name = document.getElementById('projectName').value;
+        const location = document.getElementById('projectLocation').value;
+
+        if (!name || !location) {
+            event.preventDefault();
+            alert('الرجاء تعبئة جميع الحقول المطلوبة (اسم المشروع والموقع).');
+        }
+    });
+
+    async function deleteProject(button) {
+        const projectCard = button.closest('.project-item');
+        const projectId = projectCard.dataset.projectId;
+        const projectName = projectCard.querySelector('.project-name').textContent;
+
+        const confirmed = confirm(`هل أنت متأكد أنك تريد حذف مشروع "${projectName}"؟`);
+
+        if (confirmed) {
+            document.getElementById("deleteProjectId").value = projectId;
+            document.getElementById("deleteProjectForm").submit();
+        }
+    }
+</script>
+
+<style>
+        /* Custom styles for Project Cards */
+        .project-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            border-radius: 1rem; /* More rounded corners */
+            overflow: hidden; /* Ensures image corners match card */
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08); /* Lighter initial shadow */
+        }
+
+            .project-card:hover {
+                transform: translateY(-8px); /* More pronounced lift */
+                box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25); /* Stronger shadow on hover */
+            }
+
+            .project-card .relative.overflow-hidden {
+                border-bottom-left-radius: 0;
+                border-bottom-right-radius: 0;
+            }
+
+            .project-card .flex-auto.p-4 {
+                flex-grow: 1;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+            }
+
+            .project-card .text-center {
+                margin-top: auto;
+                padding-top: 1rem;
+                border-top: 1px solid rgba(226, 232, 240, 0.4); /* Subtle separator */
+            }
+
+        .project-button {
+            padding: 0.6rem 1rem; /* Smaller padding for smaller buttons */
+            border-radius: 0.375rem; /* Slightly smaller border-radius */
+            font-weight: 600;
+            transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+            box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1); /* Slightly smaller shadow for buttons */
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem; /* Smaller font size */
+        }
+
+        .edit-button {
+            background-color: #3b82f6; /* Blue for edit */
+            color: white;
+        }
+
+            .edit-button:hover {
+                background-color: #2563eb; /* Darker blue on hover */
+                transform: translateY(-1px);
+                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
+            }
+
+        .delete-button {
+            background-color: #ef4444; /* Red for delete */
+            color: white;
+        }
+
+            .delete-button:hover {
+                background-color: #dc2626; /* Darker red on hover */
+                transform: translateY(-1px);
+                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
+            }
+
+       
+
+        .project-button i {
+            margin-left: 0.4rem; /* Smaller space for icons */
+            font-size: 0.9em; /* Adjust icon size relative to text */
+        }
+
+        /* Centering buttons with flexbox */
+        .project-buttons-container {
+            display: flex;
+            justify-content: center; /* Center horizontally */
+            gap: 0.75rem; /* Space between buttons */
+            margin-top: auto; /* Pushes buttons to the bottom */
+            padding-top: 1rem;
+            border-top: 1px solid rgba(226, 232, 240, 0.4);
+        }
+
+
+        /* Adjustments for right-to-left layout where needed */
+        [dir="rtl"] .ml-2 {
+            margin-right: 0.5rem;
+            margin-left: 0;
+        }
+
+        [dir="rtl"] .mr-2 {
+            margin-left: 0.5rem;
+            margin-right: 0;
+        }
+
+        [dir="rtl"] .ml-1 {
+            margin-right: 0.25rem;
+            margin-left: 0;
+        }
+
+        /* Ensure padding is correct for RTL breadcrumb */
+        [dir="rtl"] .pl-2 {
+            padding-left: 0;
+            padding-right: 0.5rem;
+        }
+
+        [dir="rtl"] .before\:pl-2::before {
+            padding-right: 0.5rem;
+            padding-left: 0;
+        }
+
+        [dir="rtl"] .before\:float-right::before {
+            float: left;
+        }
+
+        [dir="rtl"] .lg\:text-right {
+            text-align: left;
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none; /* Initially hidden */
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background: transparent !important; /* يلغي الخلفية الشفافة */
+            justify-content: center;
+            align-items: center;
+            padding: 1rem; /* Add some padding for smaller screens */
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            padding: 2rem; /* Slightly reduced padding */
+            border-radius: 0.75rem;
+            width: 90%;
+            max-width: 500px; /* Reduced max-width for smaller modal */
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2); /* Enhanced shadow */
+            position: relative;
+            animation: fadeIn 0.3s ease-out;
+            color: #333;
+            box-sizing: border-box; /* Include padding in width calculation */
+        }
+
+            .modal-content h3 {
+                font-size: 1.5rem; /* Slightly smaller title */
+                font-weight: 700;
+                margin-bottom: 1.25rem; /* Reduced margin */
+                text-align: center;
+                color: #333;
+            }
+
+            .modal-content label {
+                display: block;
+                margin-bottom: 0.4rem; /* Reduced margin */
+                font-weight: 600;
+                color: #555;
+                font-size: 0.9rem; /* Slightly smaller label font */
+            }
+
+            .modal-content input[type="text"],
+            .modal-content input[type="number"],
+            .modal-content textarea {
+                width: 100%;
+                padding: 0.65rem; /* Slightly reduced padding */
+                margin-bottom: 1rem; /* Reduced margin */
+                border: 1px solid #d1d5db; /* Lighter border */
+                border-radius: 0.375rem;
+                font-size: 0.95rem; /* Slightly smaller input font */
+                box-sizing: border-box;
+                background-color: #ffffff; /* White background */
+                color: #333;
+                transition: border-color 0.2s ease, box-shadow 0.2s ease;
+            }
+
+                .modal-content input[type="text"]:focus,
+                .modal-content input[type="number"]:focus,
+                .modal-content textarea:focus {
+                    border-color: #3b82f6; /* Blue border on focus */
+                    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2); /* Subtle focus shadow */
+                    outline: none; /* Remove default outline */
+                }
+
+            .modal-content textarea {
+                min-height: 80px; /* Reduced min-height */
+                resize: vertical;
+            }
+
+        .modal-buttons {
+            display: flex;
+            justify-content: flex-end;
+            gap: 0.75rem; /* Reduced gap */
+            margin-top: 1.25rem; /* Reduced margin */
+        }
+
+            .modal-buttons button {
+                padding: 0.65rem 1.25rem; /* Slightly smaller buttons */
+                border-radius: 0.4rem; /* Slightly smaller border-radius */
+                font-weight: 600;
+                cursor: pointer;
+                transition: background-color 0.3s ease, transform 0.2s ease;
+                font-size: 0.9rem; /* Slightly smaller button font */
+            }
+
+            .modal-buttons .save-button {
+                background-color: #3b82f6;
+                color: white;
+            }
+
+                .modal-buttons .save-button:hover {
+                    background-color: #2563eb;
+                    transform: translateY(-1px);
+                }
+
+            .modal-buttons .cancel-button {
+                background-color: #6b7280; /* Gray for cancel */
+                color: white;
+            }
+
+                .modal-buttons .cancel-button:hover {
+                    background-color: #4b5563; /* Darker gray on hover */
+                    transform: translateY(-1px);
+                }
+
+        .close-button {
+            position: absolute;
+            top: 0.75rem; /* Adjusted position */
+            left: 0.75rem; /* Adjusted position */
+            font-size: 1.75rem; /* Slightly smaller icon */
+            font-weight: bold;
+            color: #9ca3af; /* Lighter gray color */
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+            .close-button:hover,
+            .close-button:focus {
+                color: #333;
+                text-decoration: none;
+            }
+
+        /* Dark mode adjustments for modal */
+        .dark .modal-content {
+            background-color: #2d3748; /* Darker background */
+            color: #e2e8f0; /* Lighter text */
+        }
+
+            .dark .modal-content h3 {
+                color: #e2e8f0;
+            }
+
+            .dark .modal-content label {
+                color: #a0aec0;
+            }
+
+            .dark .modal-content input[type="text"],
+            .dark .modal-content input[type="number"],
+            .dark .modal-content textarea {
+                background-color: #4a5568; /* Darker input background */
+                border-color: #4a5568; /* Darker border */
+                color: #e2e8f0;
+            }
+
+                .dark .modal-content input[type="text"]:focus,
+                .dark .modal-content input[type="number"]:focus,
+                .dark .modal-content textarea:focus {
+                    border-color: #63b3ed; /* Lighter blue on focus for dark mode */
+                    box-shadow: 0 0 0 3px rgba(99, 179, 237, 0.2);
+                }
+
+        .dark .modal-buttons .cancel-button {
+            background-color: #4a5568;
+        }
+
+            .dark .modal-buttons .cancel-button:hover {
+                background-color: #2d3748;
+            }
+
+        .dark .close-button {
+            color: #a0aec0;
+        }
+
+            .dark .close-button:hover,
+            .dark .close-button:focus {
+                color: #e2e8f0;
+            }
+
+
+        
+
+        /* Custom Alert/Confirm Modal - تم إرجاعها إلى حالتها الأصلية */
+        .custom-alert-modal {
+            display: none; /* Hidden by default */
+            position: fixed;
+            z-index: 1001; /* Higher than other modals */
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+        background: transparent !important; /* يلغي الخلفية الشفافة */
+        justify-content: center;
+            align-items: center;
+        }
+
+            .custom-alert-modal.show {
+                display: flex; /* Show when 'show' class is added */
+            }
+
+        .custom-alert-content {
+            background-color: #fefefe;
+            padding: 2.5rem; /* More padding */
+            border-radius: 0.75rem;
+            width: 90%;
+            max-width: 400px; /* Fixed smaller width */
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.25);
+            text-align: center;
+            position: relative;
+            color: #333;
+        }
+
+            .custom-alert-content h4 {
+                font-size: 1.6rem; /* Larger title */
+                font-weight: 700;
+                margin-bottom: 1rem;
+                color: #333;
+            }
+
+            .custom-alert-content p {
+                font-size: 1.1rem; /* Larger message */
+                margin-bottom: 1.5rem;
+                line-height: 1.5;
+                color: #555;
+            }
+
+        .custom-alert-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem; /* More space between buttons */
+        }
+
+            .custom-alert-buttons button {
+                padding: 0.75rem 1.5rem; /* Larger buttons */
+                border-radius: 0.5rem;
+                font-weight: 600;
+                cursor: pointer;
+                transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+                font-size: 1rem;
+            }
+
+            .custom-alert-buttons .confirm-ok-button {
+                background-color: #3b82f6; /* Blue for OK/Confirm */
+                color: white;
+            }
+
+                .custom-alert-buttons .confirm-ok-button:hover {
+                    background-color: #2563eb;
+                    transform: translateY(-1px);
+                    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+                }
+
+            .custom-alert-buttons .confirm-cancel-button {
+                background-color: #ef4444; /* Red for Cancel */
+                color: white;
+            }
+
+                .custom-alert-buttons .confirm-cancel-button:hover {
+                    background-color: #dc2626;
+                    transform: translateY(-1px);
+                    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+                }
+
+        /* Dark mode adjustments for custom alert modal */
+        .dark .custom-alert-content {
+            background-color: #2d3748;
+            color: #e2e8f0;
+        }
+
+            .dark .custom-alert-content h4 {
+                color: #e2e8f0;
+            }
+
+            .dark .custom-alert-content p {
+                color: #a0aec0;
+            }
+
+        .dark .custom-alert-buttons .confirm-cancel-button {
+            background-color: #4a5568; /* Darker gray for dark mode cancel */
+            color: #e2e8f0;
+        }
+
+            .dark .custom-alert-buttons .confirm-cancel-button:hover {
+                background-color: #2d3748;
+            }
+
+        .dark .custom-alert-buttons .confirm-ok-button {
+            background-color: #63b3ed; /* Lighter blue for dark mode OK */
+        }
+
+            .dark .custom-alert-buttons .confirm-ok-button:hover {
+                background-color: #4299e1;
+            }
+</style>
+
+<form id="deleteProjectForm" method="post" action="/CLSprojects/DeleteConfirmed" style="display:none;">
+    @Html.AntiForgeryToken()
+    <input type="hidden" name="id" id="deleteProjectId" />
+</form>

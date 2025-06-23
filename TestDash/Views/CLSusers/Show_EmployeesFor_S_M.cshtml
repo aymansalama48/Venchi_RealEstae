@@ -1,0 +1,388 @@
+﻿@model IEnumerable<TestDash.Models.CLSuser>
+
+
+@{
+    var role = Context.Session.GetString("Role");
+    switch (role)
+    {
+        case "Admin":
+            Layout = "~/Views/Shared/_Layout.cshtml";
+            break;
+        case "Sales":
+            Layout = "~/Views/Shared/SalesLayout.cshtml";
+            break;
+        case "Marketing":
+            Layout = "~/Views/Shared/MarketingLayout.cshtml";
+            break;
+        default:
+            Layout = "~/Views/Shared/_Layout.cshtml"; // الافتراضي لو مفيش Role
+            break;
+    }
+}
+
+
+
+
+
+
+<!-- Navbar -->
+<nav class="relative flex flex-wrap items-center justify-between px-0 py-2 mx-6 transition-all ease-in shadow-none duration-250 rounded-2xl lg:flex-nowrap lg:justify-start" navbar-main navbar-scroll="false">
+    <div class="flex items-center justify-between w-full px-4 py-1 mx-auto flex-wrap-inherit">
+        <nav>
+            <ol class="flex flex-wrap pt-1 bg-transparent rounded-lg">
+                <li class="pl-2 text-sm leading-normal">
+                    <a class="text-white opacity-50" href="javascript:;">لوحة التحكم</a>
+                </li>
+                <li class="text-sm pl-2 capitalize leading-normal text-white before:float-right before:pl-2 before:text-gray-600 before:content-['/']" aria-current="page">الموظفين</li>
+            </ol>
+            <h6 class="mb-0 font-bold text-white capitalize dark:text-white">الموظفين</h6>
+        </nav>
+        <!-- breadcrumb -->
+
+
+
+
+        <div class="flex items-center mt-2 grow sm:mt-0 md:mr-0 lg:flex lg:basis-auto">
+            <div class="flex items-center md:ml-auto md:pr-4">
+            </div>
+            <ul class="flex flex-row justify-end pl-0 pr-10 mb-0 ml-0 mr-auto list-none md-max:w-full">
+
+                <li class="flex items-center pr-4 xl:hidden">
+                    <a href="javascript:;" class="block p-0 text-sm text-white transition-all ease-nav-brand" sidenav-trigger>
+                        <div class="w-4.5 overflow-hidden">
+                            <i class="ease mb-0.75 relative block h-0.5 rounded-sm bg-white transition-all"></i>
+                            <i class="ease mb-0.75 relative block h-0.5 rounded-sm bg-white transition-all"></i>
+                            <i class="ease relative block h-0.5 rounded-sm bg-white transition-all"></i>
+                        </div>
+                    </a>
+                </li>
+                <li class="flex items-center px-4">
+                    <a href="javascript:;" class="p-0 text-sm text-white transition-all ease-nav-brand">
+                        <i fixed-plugin-button-nav class="cursor-pointer fa fa-cog" aria-hidden="true"></i>
+                        <!-- fixed-plugin-button-nav  -->
+                    </a>
+                </li>
+
+
+            </ul>
+        </div>
+
+
+
+
+
+    </div>
+
+
+</nav>
+
+<!-- end Navbar -->
+
+
+
+
+
+
+
+<center>
+
+    <div class="A3_Intro">
+
+        <h2 style="font-size: 30px; color: black;">موظفين الشركة</h2>
+
+
+
+        <h2 style="font-size: 20px; color:black ">
+            تعرف على فريق العمل المتميز في شركة فينشي، فريق من المحترفين في مجالات المبيعات والتسويق
+        </h2>
+    </div>
+</center>
+
+<style>
+    .A3_Intro {
+        display: inline-block; /* ياخد عرض المحتوى فقط */
+        text-align: center;
+        font-size: 25px;
+        margin: 30px auto; /* ⬅️ توسيط أفقي */
+        color: #000;
+        padding: 10px 20px;
+        background-color: rgba(255, 255, 255, 0.788);
+        border-radius: 100px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        font-weight: bold;
+    }
+
+    @@media (max-width: 600px) {
+        .A3_Intro {
+            font-size: 16px;
+            border-radius: 30px;
+            padding: 8px 16px;
+        }
+    }
+</style>
+
+
+
+
+
+
+<div class="w-full px-6 py-6 mx-auto">
+
+
+
+
+    <div class="flex flex-wrap -mx-3 justify-center">
+
+        @foreach (var item in Model)
+        {
+
+            <div class="w-full max-w-full px-3 mb-6 sm:w-1/2 sm:flex-none xl:mb-0 xl:w-1/4 flex justify-center">
+                <div class="card">
+                    <button class="mail">
+                        <svg class="lucide lucide-mail" stroke-linejoin="round" stroke-linecap="round" stroke-width="2" stroke="currentColor" fill="none" viewBox="0 0 24 24" height="24" width="24" xmlns="http://www.w3.org/2000/svg">
+                            <rect rx="2" y="4" x="2" height="16" width="20"></rect>
+                            <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
+                        </svg>
+                    </button>
+                    <div class="profile-pic">
+                        <img src="~/img/Em.jpg" alt="@item.FullName" />
+                    </div>
+                    <div class="bottom">
+                        <div class="content">
+                            <span class="name">@item.FullName</span>
+                            <span class="about-me">@item.JobTitle </span>
+                        </div>
+                        <br />
+                                <center>
+                        <div class="bottom-bottom">
+
+                                    <h2 style="font-size: 15px; color: white;"> @item.FullName</h2>
+
+                        </div>
+                                </center>
+                    </div>
+                </div>
+            </div>
+
+
+        }
+
+
+
+
+
+
+
+
+
+
+
+    </div>
+</div>
+
+<style>
+    .card {
+        width: 280px;
+        height: 280px;
+        background: white;
+        border-radius: 32px;
+        padding: 3px;
+        position: relative;
+        box-shadow: #604b4a30 0px 70px 30px -50px;
+        transition: all 0.5s ease-in-out;
+        margin: 0 auto;
+    }
+
+
+
+
+
+        .card .mail {
+            position: absolute;
+            right: 2rem;
+            top: 1.4rem;
+            background: transparent;
+            border: none;
+        }
+
+            .card .mail svg {
+                stroke: #000000;
+                stroke-width: 3px;
+            }
+
+                .card .mail svg:hover {
+                    stroke: #2B3674;
+                }
+
+        .card .profile-pic {
+            position: absolute;
+            width: calc(100% - 6px);
+            height: calc(100% - 6px);
+            top: 3px;
+            left: 3px;
+            border-radius: 29px;
+            z-index: 1;
+            border: 0px solid #000000;
+            overflow: hidden;
+            transition: all 0.5s ease-in-out 0.2s, z-index 0.5s ease-in-out 0.2s;
+        }
+
+            .card .profile-pic img {
+                object-fit: cover;
+                width: 100%;
+                height: 100%;
+                object-position: 0px 0px;
+                transition: all 0.5s ease-in-out 0s;
+            }
+
+        .card .bottom {
+            position: absolute;
+            bottom: 3px;
+            left: 3px;
+            right: 3px;
+            background: #000000;
+            top: 80%;
+            border-radius: 29px;
+            z-index: 2;
+            box-shadow: rgba(0, 0, 0, 0.1882352941) 0px 5px 5px 0px inset;
+            overflow: hidden;
+            transition: all 0.5s cubic-bezier(0.645, 0.045, 0.355, 1) 0s;
+        }
+
+            .card .bottom .content {
+                position: absolute;
+                bottom: 0;
+                left: 1.5rem;
+                right: 1.5rem;
+                height: 160px;
+            }
+
+                .card .bottom .content .name {
+                    display: block;
+                    font-size: 1.2rem;
+                    color: white;
+                    font-weight: bold;
+                }
+
+                .card .bottom .content .about-me {
+                    display: block;
+                    font-size: 0.9rem;
+                    color: white;
+                    margin-top: 1rem;
+                }
+
+            .card .bottom .bottom-bottom {
+                position: absolute;
+                bottom: 1rem;
+                left: 1.5rem;
+                right: 1.5rem;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+            }
+
+                .card .bottom .bottom-bottom .social-links-container {
+                    display: flex;
+                    gap: 1rem;
+                }
+
+                    .card .bottom .bottom-bottom .social-links-container svg {
+                        height: 20px;
+                        fill: white;
+                        filter: drop-shadow(0 5px 5px rgba(0, 0, 0, 0.1333333333));
+                    }
+
+                        .card .bottom .bottom-bottom .social-links-container svg:hover {
+                            fill: #2B3674;
+                            transform: scale(1.2);
+                        }
+
+                .card .bottom .bottom-bottom .button {
+                    background: white;
+                    color: #000000;
+                    border: none;
+                    border-radius: 20px;
+                    font-size: 0.6rem;
+                    padding: 0.4rem 0.6rem;
+                    box-shadow: rgba(0, 0, 0, 0.1333333333) 0px 5px 5px 0px;
+                }
+
+                    .card .bottom .bottom-bottom .button:hover {
+                        background: #2B3674;
+                        color: white;
+                    }
+
+        .card:hover {
+            border-top-left-radius: 55px;
+        }
+
+            .card:hover .bottom {
+                top: 20%;
+                border-radius: 80px 29px 29px 29px;
+                transition: all 0.5s cubic-bezier(0.645, 0.045, 0.355, 1) 0.2s;
+            }
+
+            .card:hover .profile-pic {
+                width: 120px;
+                height: 120px;
+                aspect-ratio: 1;
+                top: 20px;
+                left: 20px;
+                border-radius: 50%;
+                z-index: 3;
+                border: 7px solid #000000;
+                box-shadow: rgba(0, 0, 0, 0.1882352941) 0px 5px 5px 0px;
+                transition: all 0.5s ease-in-out, z-index 0.5s ease-in-out 0.1s;
+            }
+
+                .card:hover .profile-pic:hover {
+                    transform: scale(1.1);
+                    border-radius: 50%;
+                }
+
+                .card:hover .profile-pic img {
+                    transform: scale(1.5);
+                    object-position: center;
+                    transition: all 0.5s ease-in-out 0.5s;
+                }
+
+    /* Styles for the "Add New Employee" button */
+    .add-employee-button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 12px 24px;
+        background-color: #4CAF50; /* Green color */
+        color: white;
+        border: none;
+        border-radius: 8px;
+        font-size: 1rem;
+        font-weight: bold;
+        cursor: pointer;
+        transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        text-decoration: none; /* Remove underline for links */
+    }
+
+        .add-employee-button:hover {
+            background-color: #45a049; /* Darker green on hover */
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .add-employee-button i {
+            margin-right: 8px; /* Space between icon and text */
+        }
+</style>
+
+
+
+
+
+
+
+
+
+
+
+

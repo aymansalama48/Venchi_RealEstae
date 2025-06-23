@@ -1,0 +1,487 @@
+﻿@model TestDash.Models.CLSuser
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+
+
+
+
+
+
+
+<style>
+    .employee-content h2,
+    .employee-content p,
+    .employee-content h5,
+    .employee-content h6,
+    .employee-content span,
+    .employee-content li,
+    .employee-content div,
+    .employee-content label,
+    .employee-content input,
+    .employee-content select,
+    .employee-content textarea {
+        color: black !important;
+    }
+
+    /* تغيير لون الـ placeholder بس */
+    input::placeholder,
+    textarea::placeholder,
+    select::placeholder {
+        color: black !important;
+        opacity: 1; /* مهم للتأكد من ظهوره بلونه */
+    }
+
+    /* لو حابب تخلي الكتابة العادية مش بتتأثر */
+    input,
+    textarea,
+    select {
+        color: inherit;
+    }
+</style>
+
+
+
+
+
+
+
+<!-- Navbar -->
+<nav class="relative flex flex-wrap items-center justify-between px-0 py-2 mx-6 transition-all ease-in shadow-none duration-250 rounded-2xl lg:flex-nowrap lg:justify-start" navbar-main navbar-scroll="false">
+    <div class="flex items-center justify-between w-full px-4 py-1 mx-auto flex-wrap-inherit">
+        <nav>
+            <ol class="flex flex-wrap pt-1 bg-transparent rounded-lg">
+                <li class="pl-2 text-sm leading-normal">
+                    <a class="text-white opacity-50" href="javascript:;">لوحة التحكم</a>
+                </li>
+                <li class="text-sm pl-2 capitalize leading-normal text-white before:float-right before:pl-2 before:text-gray-600 before:content-['/']" aria-current="page">الموظفين</li>
+            </ol>
+            <h6 class="mb-0 font-bold text-white capitalize dark:text-white">إضافة موظف جديد</h6>
+        </nav>
+        <!-- breadcrumb -->
+
+
+
+
+        <div class="flex items-center mt-2 grow sm:mt-0 md:mr-0 lg:flex lg:basis-auto">
+            <div class="flex items-center md:ml-auto md:pr-4">
+            </div>
+            <ul class="flex flex-row justify-end pl-0 pr-10 mb-0 ml-0 mr-auto list-none md-max:w-full">
+
+                <li class="flex items-center pr-4 xl:hidden">
+                    <a href="javascript:;" class="block p-0 text-sm text-white transition-all ease-nav-brand" sidenav-trigger>
+                        <div class="w-4.5 overflow-hidden">
+                            <i class="ease mb-0.75 relative block h-0.5 rounded-sm bg-white transition-all"></i>
+                            <i class="ease mb-0.75 relative block h-0.5 rounded-sm bg-white transition-all"></i>
+                            <i class="ease relative block h-0.5 rounded-sm bg-white transition-all"></i>
+                        </div>
+                    </a>
+                </li>
+                <li class="flex items-center px-4">
+                    <a href="javascript:;" class="p-0 text-sm text-white transition-all ease-nav-brand">
+                        <i fixed-plugin-button-nav class="cursor-pointer fa fa-cog" aria-hidden="true"></i>
+                        <!-- fixed-plugin-button-nav  -->
+                    </a>
+                </li>
+
+                <!-- notifications -->
+
+            </ul>
+        </div>
+
+
+
+
+
+    </div>
+
+
+</nav>
+
+<!-- end Navbar -->
+
+
+<center>
+
+    <div class="A3_Intro">
+
+        <h2 style="font-size: 25px; color: black;"> املأ الحقول التالية لإضافة موظف جديد</h2>
+
+    </div>
+</center>
+
+<style>
+    .A3_Intro {
+        display: inline-block; /* ياخد عرض المحتوى فقط */
+        text-align: center;
+        font-size: 25px;
+        margin: 30px auto; /* ⬅️ توسيط أفقي */
+        color: #000;
+        padding: 10px 20px;
+        background-color: rgba(255, 255, 255, 0.788);
+        border-radius: 100px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        font-weight: bold;
+    }
+
+    @@media (max-width: 600px) {
+        .A3_Intro {
+            font-size: 16px;
+            border-radius: 30px;
+            padding: 8px 16px;
+        }
+    }
+</style>
+
+
+<div class="w-full px-6 py-6 mx-auto">
+    <h2 class="text-4xl font-bold text-center mb-2 text-white dark:text-white"></h2>
+    <p class="text-center text-white dark:text-white text-lg mb-8"></p>
+
+    <form asp-action="Create" method="POST">
+        <div class="flex flex-wrap justify-center -mx-3    employee-content">
+            <div class="w-full max-w-full px-3 mb-6 lg:mb-0 lg:w-4/12 lg:flex-none">
+                <div class="relative flex flex-col h-full min-w-0 break-words bg-white border-0 shadow-xl dark:bg-slate-850 dark:shadow-dark-xl rounded-2xl bg-clip-border">
+                    <div class="flex-auto p-6">
+                        <div class="flex flex-wrap -mx-3">
+                            <div class="flex-none w-auto max-w-full px-3">
+                                <div class="relative inline-flex items-center justify-center text-white transition-all duration-200 ease-in-out text-base h-19 w-19 rounded-xl overflow-hidden employee-img-placeholder">
+                                    <i class="fas fa-user-plus"></i> <label for="upload-photo" class="absolute bottom-0 right-0 p-1 bg-gray-700 bg-opacity-70 rounded-full cursor-pointer">
+                                        <i class="fas fa-camera text-white text-xs"></i>
+                                        <input type="file" id="upload-photo" name="employee-photo" class="hidden" accept="image/*">
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="flex-none w-auto max-w-full px-3 my-auto">
+                                <div class="h-full">
+                                    <div class="flex items-center gap-4">
+                                        <input type="text" id="employee-name" name="FullName" placeholder="الاسم الكامل" class="text-2xl font-bold dark:text-white" style="background: none; border: none; padding: 0; text-align: right;" required />
+                                    </div>
+                                    <div class="profile-header-status">
+                                        <input type="text" id="employee-job-title-header" name="JobTitle" placeholder="المسمى الوظيفي" required class="mt-2 font-semibold leading-normal text-slate-600 text-size-sm" style="background: none; border: none; padding: 0; text-align: right;" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="contact-icon-container mt-2">
+                       
+                            <a href="javascript:void(0);" class="contact-icon-button" title="Call">
+                                <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="Phone Call">
+                            </a>
+                            <a href="javascript:void(0);" class="contact-icon-button" title="Call">
+                                <img src="https://cdn-icons-png.flaticon.com/512/597/597177.png" alt="Phone Call">
+                            </a>
+                         
+                        </div>
+                        <div class="mt-6">
+                            <div class="flex flex-wrap -mx-3">
+                                <div class="w-full max-w-full px-3 flex-0">
+                                    <div class="flex flex-col">
+                                        <div class="mb-4">
+                                            <h6 class="mb-1 text-sm font-bold dark:text-white text-center border-t border-b border-gray-200 py-2">معلومات الاتصال</h6>
+                                            <div class="info-row">
+                                                <i class="fas fa-phone"></i>
+                                                <input type="tel" id="employee-phone" name="PhoneNumber" placeholder="رقم الهاتف" required />
+                                            </div>
+                                            <div class="info-row">
+                                                <i class="fas fa-envelope"></i>
+                                                <input type="email" id="employee-email" name="Email" placeholder="البريد الإلكتروني" required />
+                                            </div>
+
+
+
+
+
+
+                                            <div class="info-row">
+                                                <i class="fas fa-lock"></i>
+                                                <input type="password" id="employee-password" name="employee-password" placeholder="كلمة المرور" required />
+                                            </div>
+                                            <div class="info-row">
+                                                <i class="fas fa-lock"></i>
+                                                <input type="password" id="employee-confirm-password" name="PasswordHash" placeholder="تأكيد كلمة المرور" required />
+                                            </div>
+                                        </div>
+                                       
+                                        <div class="mb-4">
+                                            <h6 class="mb-1 text-sm font-bold dark:text-white text-center border-t border-b border-gray-200 py-2">القسم</h6>
+                                            <div class="info-row">
+                                                <i class="fas fa-users"></i>
+                                                <select id="employee-department" name="Role" required>
+                                                    <option value="">اختر القسم</option>
+                                                    <option value="Admin">Admin</option>
+                                                    <option value="Sales">Sales</option>
+                                                    <option value="Marketing">Marketing</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <h6 class="mb-1 text-sm font-bold dark:text-white text-center border-t border-b border-gray-200 py-2">تاريخ التعيين</h6>
+                                            <div class="info-row">
+                                                <i class="fas fa-calendar-alt"></i>
+                                                <input type="date" id="employee-hire-date" name="HireDate" required />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="w-full max-w-full px-3 lg:w-4/12 lg:flex-none">
+                <div class="relative flex flex-col min-w-0 break-words bg-white border-0 shadow-xl dark:bg-slate-850 dark:shadow-dark-xl rounded-2xl bg-clip-border">
+                    <div class="flex-auto p-4">
+                        <h6 class="mb-3 text-sm font-bold dark:text-white text-center border-t border-b border-gray-200 py-2">ملاحظات حول الموظف</h6>
+                        <div class="mb-4">
+                            <div class="info-row" style="display: block;">
+                                <textarea id="employee-notes" name="Notes" placeholder="أضف أي ملاحظات إضافية حول الموظف هنا..." class="w-full" style="text-align: right;"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="relative flex flex-col min-w-0 break-words bg-white border-0 shadow-xl dark:bg-slate-850 dark:shadow-dark-xl rounded-2xl bg-clip-border mt-4">
+                    <div class="flex-auto p-4">
+                        <h6 class="mb-3 text-sm font-bold dark:text-white text-center border-t border-b border-gray-200 py-2">إجراءات</h6>
+                        <div class="flex flex-col gap-2">
+                            <button type="submit" class="action-button add-button">
+                                <i class="fas fa-user-plus mr-2"></i>
+                                إضافة موظف
+                            </button>
+                            <button type="button" class="action-button cancel-button" onclick="history.back()">
+                                <i class="fas fa-times mr-2"></i>
+                                إلغاء
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+
+
+
+
+
+
+
+
+
+<style>
+    /* Custom styles */
+    .rounded-2xl {
+        border-radius: 1rem;
+    }
+
+    .text-size-sm {
+        font-size: 0.875rem;
+    }
+
+    /* Quick contact buttons (not relevant for add page, but kept for consistent layout) */
+    .contact-icon-container {
+        display: flex;
+        gap: 20px;
+        justify-content: center;
+        align-items: center;
+        margin-top: 1rem;
+    }
+
+    .contact-icon-button {
+        width: 31.5px;
+        height: 31.5px;
+        border-radius: 50%;
+        background-color: #ffffff;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: transform 0.3s ease;
+        opacity: 0.5; /* Dim them as they are not functional on this page */
+        cursor: not-allowed;
+    }
+
+        .contact-icon-button img {
+            width: 18px;
+            height: 18px;
+            object-fit: contain;
+        }
+
+        .contact-icon-button .fa-solid {
+            font-size: 18px;
+            color: #6b7280;
+        }
+
+    /* Form specific styles for input fields */
+    .info-row {
+        display: flex;
+        align-items: center;
+        justify-content: center; /* Center the content within the row */
+        margin-top: 0.5rem;
+    }
+
+        .info-row i {
+            margin-left: 0.5rem; /* Space between icon and input */
+            color: #6b7280; /* Adjust icon color */
+        }
+
+        .info-row input[type="text"],
+        .info-row input[type="email"],
+        .info-row input[type="tel"],
+        .info-row input[type="date"],
+        .info-row input[type="password"], /* Added password to styling */
+        .info-row textarea,
+        .info-row select, /* Added select to styling */
+        .info-row .display-value {
+            flex-grow: 1; /* Allow input/span to take available space */
+            padding: 0.5rem;
+            border: 1px solid #ddd;
+            border-radius: 0.4rem;
+            font-size: 0.9rem;
+            text-align: right;
+            background-color: #f9f9f9; /* Light background for inputs */
+            color: #333;
+        }
+
+        .info-row textarea {
+            min-height: 80px; /* Adjust as needed */
+            resize: vertical;
+        }
+
+    /* Styles for the "status" input to match the larger name style */
+    .profile-header-status input {
+        font-weight: 600; /* Bolder */
+        color: #4a5568; /* Slightly darker grey */
+        font-size: 0.95rem; /* Slightly larger text */
+        border: none; /* Remove border */
+        background: transparent; /* Transparent background */
+        padding: 0;
+    }
+
+    /* Image placeholder for new employee */
+    .employee-img-placeholder {
+        background-color: #e0e0e0;
+        color: #888;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 2rem;
+    }
+
+    /* Action buttons */
+    .action-button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 6px;
+        padding: 10px 20px;
+        border-radius: 0.5rem;
+        font-weight: 600;
+        transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        text-decoration: none;
+        color: #fff;
+        font-size: 0.9rem;
+        width: 100%;
+        margin-bottom: 0.5rem; /* Space between buttons */
+    }
+
+        .action-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+
+    .add-button {
+        background-color: #007bff; /* Blue */
+    }
+
+        .add-button:hover {
+            background-color: #0069d9;
+        }
+
+    .cancel-button {
+        background-color: #dc3545; /* Red */
+    }
+
+        .cancel-button:hover {
+            background-color: #c82333;
+        }
+</style>
+@* 
+<h1>Create</h1>
+
+<h4>CLSuser</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="FullName" class="control-label"></label>
+                <input asp-for="FullName" class="form-control" />
+                <span asp-validation-for="FullName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="JobTitle" class="control-label"></label>
+                <input asp-for="JobTitle" class="form-control" />
+                <span asp-validation-for="JobTitle" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Department" class="control-label"></label>
+                <input asp-for="Department" class="form-control" />
+                <span asp-validation-for="Department" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PhoneNumber" class="control-label"></label>
+                <input asp-for="PhoneNumber" class="form-control" />
+                <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Email" class="control-label"></label>
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="HireDate" class="control-label"></label>
+                <input asp-for="HireDate" class="form-control" />
+                <span asp-validation-for="HireDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Notes" class="control-label"></label>
+                <input asp-for="Notes" class="form-control" />
+                <span asp-validation-for="Notes" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PasswordHash" class="control-label"></label>
+                <input asp-for="PasswordHash" class="form-control" />
+                <span asp-validation-for="PasswordHash" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Role" class="control-label"></label>
+                <input asp-for="Role" class="form-control" />
+                <span asp-validation-for="Role" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ProfileImageFileName" class="control-label"></label>
+                <input asp-for="ProfileImageFileName" class="form-control" />
+                <span asp-validation-for="ProfileImageFileName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div> *@
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

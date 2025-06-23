@@ -1,0 +1,401 @@
+﻿@model TestDash.Models.CLSclient
+
+
+
+
+@{
+    Layout = "~/Views/Shared/SalesLayout.cshtml";
+}
+
+
+<style>
+    /* Ensure text within the form is black */
+    form.text-black * {
+        color: black !important;
+    }
+
+    /* Exception for buttons to retain their original color */
+    form.text-black .action-button {
+        color: white !important;
+    }
+
+    /* Dim and disable text inputs and selects that are read-only */
+    .info-row input[type="text"][readonly],
+    .info-row input[type="tel"][readonly],
+    .info-row select[readonly],
+    .info-row input[type="text"][disabled],
+    .info-row input[type="tel"][disabled],
+    .info-row select[disabled] {
+        background-color: #e9ecef; /* Lighter background for read-only fields */
+        opacity: 0.7; /* Slightly dim them */
+        cursor: not-allowed; /* Indicate they are not editable */
+    }
+
+    /* Style for read-only select (to remove arrow and make it look like text) */
+    .info-row select[readonly] {
+        pointer-events: none; /* Prevent clicks on the dropdown */
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        background-image: none; /* Remove custom arrow */
+        padding-left: 0.5rem; /* Adjust padding if arrow is gone */
+    }
+</style>
+
+<nav class="relative flex flex-wrap items-center justify-between px-0 py-2 mx-6 transition-all ease-in shadow-none duration-250 rounded-2xl lg:flex-nowrap lg:justify-start" navbar-main navbar-scroll="false">
+    <div class="flex items-center justify-between w-full px-4 py-1 mx-auto flex-wrap-inherit">
+        <nav>
+            <ol class="flex flex-wrap pt-1 bg-transparent rounded-lg">
+                <li class="pl-2 text-sm leading-normal">
+                    <a class="text-white opacity-50" href="javascript:;">لوحة التحكم</a>
+                </li>
+                <li class="text-sm pl-2 capitalize leading-normal text-white before:float-right before:pl-2 before:text-gray-600 before:content-['/']" aria-current="page">تفاصيل العميل </li>
+            </ol>
+            <h6 class="mb-0 font-bold text-white capitalize dark:text-white">عرض بيانات العميل</h6>
+        </nav>
+        <div class="flex items-center mt-2 grow sm:mt-0 md:mr-0 lg:flex lg:basis-auto">
+            <div class="flex items-center md:ml-auto md:pr-4">
+            </div>
+            <ul class="flex flex-row justify-end pl-0 pr-10 mb-0 ml-0 mr-auto list-none md-max:w-full">
+                <li class="flex items-center pr-4 xl:hidden">
+                    <a href="javascript:;" class="block p-0 text-sm text-white transition-all ease-nav-brand" sidenav-trigger>
+                        <div class="w-4.5 overflow-hidden">
+                            <i class="ease mb-0.75 relative block h-0.5 rounded-sm bg-white transition-all"></i>
+                            <i class="ease mb-0.75 relative block h-0.5 rounded-sm bg-white transition-all"></i>
+                            <i class="ease relative block h-0.5 rounded-sm bg-white transition-all"></i>
+                        </div>
+                    </a>
+                </li>
+                <li class="flex items-center px-4">
+                    <a href="javascript:;" class="p-0 text-sm text-white transition-all ease-nav-brand">
+                        <i fixed-plugin-button-nav class="cursor-pointer fa fa-cog" aria-hidden="true"></i>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<center>
+    <div class="A3_Intro">
+        <h2 style="font-size: 25px; color:black ">
+            معلومات العميل
+        </h2>
+    </div>
+</center>
+
+<style>
+    .A3_Intro {
+        display: inline-block; /* Takes content width only */
+        text-align: center;
+        font-size: 25px;
+        margin: 30px auto; /* ⬅️ Horizontal centering */
+        color: #000;
+        padding: 10px 20px;
+        background-color: rgba(255, 255, 255, 0.788);
+        border-radius: 100px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        font-weight: bold;
+    }
+
+    @@media (max-width: 600px) {
+        .A3_Intro {
+            font-size: 16px;
+            border-radius: 30px;
+            padding: 8px 16px;
+        }
+    }
+</style>
+
+<div class="w-full px-6 py-6 mx-auto">
+    <form asp-action="Edit" asp-controller="CLSclients" asp-route-id="@Model.Id" method="post" class="text-black">
+        <div class="flex flex-wrap justify-center -mx-3">
+            <div class="w-full max-w-full px-3 mb-6 lg:mb-0 lg:w-4/12 lg:flex-none">
+                <div class="relative flex flex-col h-full min-w-0 break-words bg-white border-0 shadow-xl dark:bg-slate-850 dark:shadow-dark-xl rounded-2xl bg-clip-border">
+                    <div class="flex-auto p-6">
+                        <div class="flex flex-wrap -mx-3">
+                            <div class="flex-none w-auto max-w-full px-3">
+                                <div class="relative inline-flex items-center justify-center text-white transition-all duration-200 ease-in-out text-base h-19 w-19 rounded-xl overflow-hidden">
+                                    <img src="@Url.Content("~/img/123.jpg")" alt="profile-img" class="w-full h-full object-cover shadow-2xl rounded-xl" />
+                                    @* Image upload is read-only, so hide the label for input file *@
+                                </div>
+                            </div>
+                            <div class="flex-none w-auto max-w-full px-3 my-auto">
+                                <div class="h-full">
+                                    <div class="flex items-center gap-4">
+                                        @* Name field is read-only *@
+                                        <input type="text" id="client-name" name="Name" value="@Model.Name" class="text-2xl font-bold dark:text-white" style="background: none; border: none; padding: 0; text-align: right;" readonly />
+                                    </div>
+                                    <div class="profile-header-status">
+                                        <label>الحالة</label>
+                                        @* Status field is editable *@
+                                        <select id="client-status" name="Status" required
+                                                style="width:100%; border:1px solid #ddd; border-radius:7px; padding:7px 10px; background:#fff;">
+                                            @foreach (var status in new[] { "New", "Follow Up", "No Ansewar", "Meeting", "Done Deal", "Low Budget" })
+                                            {
+                                                if (Model.Status == status)
+                                                {
+                                                    <option value="@status" selected>@status</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="@status">@status</option>
+                                                }
+                                            }
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="contact-icon-container mt-2">
+                            <a href="javascript:void(0);" class="contact-icon-button" title="WhatsApp">
+                                <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp">
+                            </a>
+                            <a href="javascript:void(0);" class="contact-icon-button" title="Call">
+                                <img src="https://cdn-icons-png.flaticon.com/512/597/597177.png" alt="Phone Call">
+                            </a>
+                            <a href="javascript:void(0);" class="contact-icon-button" title="Truecaller">
+                                <img src="https://www.truecaller.com/cms/af897255f80ca7b3a817bfe6c15d803e.avif" alt="Truecaller">
+                            </a>
+                        </div>
+                        <div class="mt-6">
+                            <div class="flex flex-wrap -mx-3">
+                                <div class="w-full max-w-full px-3 flex-0">
+                                    <div class="flex flex-col">
+                                        <div class="mb-4">
+                                            <h6 class="mb-1 text-sm font-bold dark:text-white text-center border-t border-b border-gray-200 py-2">معلومات الاتصال</h6>
+                                            <div class="info-row">
+                                                <i class="fas fa-phone"></i>
+                                                @* Phone field is read-only *@
+                                                <input type="tel" id="client-phone" name="Phone" value="@Model.Phone" readonly />
+                                            </div>
+                                        </div>
+                                        <div class="mb-4">
+                                            <h6 class="mb-1 text-sm font-bold dark:text-white text-center border-t border-b border-gray-200 py-2">المشروع المهتم به</h6>
+                                            <div class="info-row">
+                                                <i class="fas fa-building"></i>
+                                                @* Project dropdown is read-only. We'll display its name as text or a disabled dropdown. *@
+                                                @* To make it truly read-only but still pass the ID if needed on form submission,
+                                                   we'll keep it as a select but add 'disabled' and a hidden input for the ID.
+                                                   The 'disabled' attribute prevents user interaction and doesn't submit the value,
+                                                   so a hidden input is necessary if the ID is required on post.
+                                                   Alternatively, just display the name as a span/div if the ID isn't needed.
+                                                   For this example, we'll keep it as a disabled select for visual consistency
+                                                   and assume the ID is passed via the route/Model.Id anyway.
+                                                *@
+                                                <select asp-for="ProjectId" class="form-control" asp-items="ViewBag.ProjectId" disabled>
+                                                    @* Display the selected project's name as the only option, or ensure the correct one is selected *@
+                                                    @if (Model.Project != null)
+                                                    {
+                                                        <option value="@Model.ProjectId" selected>@Model.Project.Name</option>
+                                                    }
+                                                </select>
+                                                @* If you strictly need to pass the ProjectId back and the select is disabled, add a hidden input: *@
+                                                <input type="hidden" asp-for="ProjectId" value="@Model.ProjectId" />
+                                            </div>
+                                        </div>
+                                        <div class="mb-4">
+                                            <h6 class="mb-1 text-sm font-bold dark:text-white text-center border-t border-b border-gray-200 py-2">المصدر</h6>
+                                            <div class="info-row">
+                                                <i class="fas fa-user-plus"></i>
+                                                @* Source dropdown is read-only *@
+                                                <select id="client-source" name="Source" disabled
+                                                        style="width:100%; border:1px solid #ddd; border-radius:7px; padding:7px 10px; background:#fff;">
+                                                    @foreach (var source in new[] { "اختر المصدر...", "فيس بوك", "بايوت", "دوبزل", "واتساب", "موقع إلكتروني", "إحالة" })
+                                                    {
+                                                        var value = source == "اختر المصدر..." ? "" : source;
+                                                        if (Model.Source == value)
+                                                        {
+                                                            <option value="@value" selected>@source</option>
+                                                        }
+                                                        else
+                                                        {
+                                                            <option value="@value">@source</option>
+                                                        }
+                                                    }
+                                                </select>
+                                                <input type="hidden" name="Source" value="@Model.Source" /> @* Hidden field to pass disabled select value *@
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="w-full max-w-full px-3 lg:w-4/12 lg:flex-none">
+                <div class="relative flex flex-col min-w-0 break-words bg-white border-0 shadow-xl dark:bg-slate-850 dark:shadow-dark-xl rounded-2xl bg-clip-border">
+                    <div class="flex-auto p-4">
+                        <h6 class="mb-3 text-sm font-bold dark:text-white text-center border-t border-b border-gray-200 py-2">ملاحظات العميل</h6>
+                        <div class="mb-4">
+                            <div class="info-row" style="display: block;">
+                                @* Notes textarea is editable *@
+                                <textarea id="client-notes" name="Notes" placeholder="ملاحظات إضافية حول العميل" class="w-full" style="text-align: right;">@Model.Notes</textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="relative flex flex-col min-w-0 break-words bg-white border-0 shadow-xl dark:bg-slate-850 dark:shadow-dark-xl rounded-2xl bg-clip-border mt-4">
+                    <div class="flex-auto p-4">
+                        <h6 class="mb-3 text-sm font-bold dark:text-white text-center border-t border-b border-gray-200 py-2">إجراءات</h6>
+                        <div class="flex flex-col gap-2">
+                            <button type="submit" class="action-button save-button">
+                                <i class="fas fa-save mr-2"></i>
+                                حفظ التغييرات
+                            </button>
+                            <button type="button" class="action-button cancel-button" onclick="history.back()">
+                                <i class="fas fa-times mr-2"></i>
+                                إلغاء
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+<style>
+    /* Custom styles (retained from your original, ensuring consistency) */
+    .rounded-2xl {
+        border-radius: 1rem;
+    }
+
+    .text-size-sm {
+        font-size: 0.875rem;
+    }
+
+    .contact-icon-container {
+        display: flex;
+        gap: 20px;
+        justify-content: center;
+        align-items: center;
+        margin-top: 1rem;
+    }
+
+    .contact-icon-button {
+        width: 31.5px;
+        height: 31.5px;
+        border-radius: 50%;
+        background-color: #ffffff;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: transform 0.3s ease;
+        opacity: 0.5;
+        cursor: not-allowed;
+    }
+
+        .contact-icon-button img {
+            width: 18px;
+            height: 18px;
+            object-fit: contain;
+        }
+
+        .contact-icon-button .fa-solid {
+            font-size: 18px;
+            color: #6b7280;
+        }
+
+    .info-row {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: 0.5rem;
+    }
+
+        .info-row i {
+            margin-left: 0.5rem;
+            color: #6b7280;
+        }
+
+        .info-row input[type="text"],
+        .info-row input[type="email"],
+        .info-row input[type="tel"],
+        .info-row input[type="date"],
+        .info-row textarea,
+        .info-row select,
+        .info-row .display-value {
+            flex-grow: 1;
+            padding: 0.5rem;
+            border: 1px solid #ddd;
+            border-radius: 0.4rem;
+            font-size: 0.9rem;
+            text-align: right;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+
+        .info-row textarea {
+            min-height: 80px;
+            resize: vertical;
+        }
+
+    .profile-header-status select {
+        font-weight: 600;
+        color: #4a5568;
+        font-size: 0.95rem;
+        border: none;
+        background: transparent;
+        padding: 0;
+        width: 100%;
+        text-align: right;
+    }
+
+    .profile-header-status select {
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        background-image: url('data:image/svg+xml;utf8,<svg fill="%236b7280" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/><path d="M0 0h24v24H0z" fill="none"/></svg>');
+        background-repeat: no-repeat;
+        background-position: left 0.5rem center;
+        padding-left: 1.5rem;
+    }
+
+    .action-button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 6px;
+        padding: 10px 20px;
+        border-radius: 0.5rem;
+        font-weight: 600;
+        transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        text-decoration: none;
+        color: #fff;
+        font-size: 0.9rem;
+        width: 100%;
+        margin-bottom: 0.5rem;
+    }
+
+        .action-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+
+    .save-button {
+        background-color: #28a745;
+    }
+
+        .save-button:hover {
+            background-color: #218838;
+        }
+
+    .cancel-button {
+        background-color: #dc3545;
+    }
+
+        .cancel-button:hover {
+            background-color: #c82333;
+        }
+</style>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

@@ -1,0 +1,1662 @@
+﻿@model IEnumerable<TestDash.Models.CLSclient>
+@{
+    Layout = "~/Views/Shared/MarketingLayout.cshtml";
+}
+
+@{
+    var userId = Context.Session.GetInt32("UserId");
+    var FullName = Context.Session.GetString("FullName");
+    var JobTitle = Context.Session.GetString("JobTitle");
+    var PhoneNumber = Context.Session.GetString("PhoneNumber");
+    var Email = Context.Session.GetString("Email");
+    var Role = Context.Session.GetString("Role");
+}
+
+<!-- Navbar -->
+<nav class="relative flex flex-wrap items-center justify-between px-0 py-2 mx-6 transition-all ease-in shadow-none duration-250 rounded-2xl lg:flex-nowrap lg:justify-start" navbar-main navbar-scroll="false">
+    <div class="flex items-center justify-between w-full px-4 py-1 mx-auto flex-wrap-inherit">
+        <nav>
+            <ol class="flex flex-wrap pt-1 bg-transparent rounded-lg">
+                <li class="pl-2 text-sm leading-normal">
+                    <a class="text-white opacity-50" href="javascript:;">لوحة التحكم</a>
+                </li>
+                <li class="text-sm pl-2 capitalize leading-normal text-white before:float-right before:pl-2 before:text-gray-600 before:content-['/']" aria-current="page">لوحة التحكم</li>
+            </ol>
+            <h6 class="mb-0 font-bold text-white capitalize dark:text-white">الرئيسية</h6>
+        </nav>
+        <!-- breadcrumb -->
+
+
+
+
+        <div class="flex items-center mt-2 grow sm:mt-0 md:mr-0 lg:flex lg:basis-auto">
+            <div class="flex items-center md:ml-auto md:pr-4">
+            </div>
+            <ul class="flex flex-row justify-end pl-0 pr-10 mb-0 ml-0 mr-auto list-none md-max:w-full">
+
+                <li class="flex items-center pr-4 xl:hidden">
+                    <a href="javascript:;" class="block p-0 text-sm text-white transition-all ease-nav-brand" sidenav-trigger>
+                        <div class="w-4.5 overflow-hidden">
+                            <i class="ease mb-0.75 relative block h-0.5 rounded-sm bg-white transition-all"></i>
+                            <i class="ease mb-0.75 relative block h-0.5 rounded-sm bg-white transition-all"></i>
+                            <i class="ease relative block h-0.5 rounded-sm bg-white transition-all"></i>
+                        </div>
+                    </a>
+                </li>
+                <li class="flex items-center px-4">
+                    <a href="javascript:;" class="p-0 text-sm text-white transition-all ease-nav-brand">
+                        <i fixed-plugin-button-nav class="cursor-pointer fa fa-cog" aria-hidden="true"></i>
+                        <!-- fixed-plugin-button-nav  -->
+                    </a>
+                </li>
+
+                <!-- notifications -->
+
+                <li class="relative flex items-center pl-2">
+                    <p class="hidden transform-dropdown-show"></p>
+                    <a dropdown-trigger href="javascript:;" class="block p-0 text-sm text-white transition-all ease-nav-brand" aria-expanded="false">
+                        <i class="cursor-pointer fa fa-bell" aria-hidden="true"></i>
+                    </a>
+
+                    <ul dropdown-menu class="text-sm dark:bg-slate-850 dark:shadow-dark-xl transform-dropdown before:font-awesome before:leading-default before:duration-350 before:ease lg:shadow-3xl duration-250 min-w-44 before:text-5.5 pointer-events-none absolute left-0 top-0 z-50 origin-top list-none rounded-lg border-0 border-solid border-transparent bg-white bg-clip-padding px-2 py-4 text-left text-slate-500 opacity-0 transition-all before:absolute before:right-auto before:top-0 before:left-2 before:z-50 before:inline-block before:font-normal before:text-white before:antialiased before:transition-all before:content-['\f0d8'] sm:-mr-6 before:sm:left-3 lg:absolute lg:mt-2 lg:block lg:cursor-pointer">
+                        <!-- add show class on dropdown open js -->
+                        <li class="relative mb-2">
+                            <a class="ease py-1.2 clear-both block w-full whitespace-nowrap rounded-lg bg-transparent px-4 duration-300 dark:hover:bg-slate-900 hover:bg-gray-200 hover:text-slate-700 lg:transition-colors" href="javascript:;">
+                                <div class="flex py-1">
+                                    <div class="my-auto">
+                                        <img src="../assets/img/team-2.jpg" class="inline-flex items-center justify-center ml-4 text-sm text-white h-9 w-9 max-w-none rounded-xl" />
+                                    </div>
+                                    <div class="flex flex-col justify-center">
+                                        <h6 class="mb-1 text-sm font-normal leading-normal dark:text-white"><span class="font-semibold">رسالة جديدة</span> من لور</h6>
+                                        <p class="mb-0 ml-auto text-xs leading-tight text-slate-400">
+                                            <i class="ml-1 fa fa-clock" aria-hidden="true"></i>
+                                            منذ 13 دقيقة
+                                        </p>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+
+                        <li class="relative mb-2">
+                            <a class="ease py-1.2 clear-both block w-full whitespace-nowrap rounded-lg px-4 transition-colors duration-300 dark:hover:bg-slate-900 hover:bg-gray-200 hover:text-slate-700" href="javascript:;">
+                                <div class="flex py-1">
+                                    <div class="my-auto">
+                                        <img src="../assets/img/small-logos/logo-spotify.svg" class="inline-flex items-center justify-center ml-4 text-sm text-white bg-gradient-to-tl from-zinc-800 to-zinc-700 dark:bg-gradient-to-tl dark:from-slate-750 dark:to-gray-850 h-9 w-9 max-w-none rounded-xl" />
+                                    </div>
+                                    <div class="flex flex-col justify-center">
+                                        <h6 class="mb-1 text-sm font-normal leading-normal dark:text-white"><span class="font-semibold">البوم جديد</span> بواسطة ترافيس سكوت</h6>
+                                        <p class="mb-0 ml-auto text-xs leading-tight text-slate-400">
+                                            <i class="ml-1 fa fa-clock" aria-hidden="true"></i>
+                                            يوم 1
+                                        </p>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+
+                        <li class="relative">
+                            <a class="ease py-1.2 clear-both block w-full whitespace-nowrap rounded-lg px-4 transition-colors duration-300 dark:hover:bg-slate-900 hover:bg-gray-200 hover:text-slate-700" href="javascript:;">
+                                <div class="flex py-1">
+                                    <div class="inline-flex items-center justify-center my-auto ml-4 text-sm text-white transition-all duration-200 ease-nav-brand bg-gradient-to-tl from-slate-600 to-slate-300 h-9 w-9 rounded-xl">
+                                        <svg width="12px" height="12px" viewBox="0 0 43 36" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                                            <title>credit-card</title>
+                                            <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                                <g transform="translate(-2169.000000, -745.000000)" fill="#FFFFFF" fill-rule="nonzero">
+                                                    <g transform="translate(1716.000000, 291.000000)">
+                                                        <g transform="translate(453.000000, 454.000000)">
+                                                            <path class="color-background" d="M43,10.7482083 L43,3.58333333 C43,1.60354167 41.3964583,0 39.4166667,0 L3.58333333,0 C1.60354167,0 0,1.60354167 0,3.58333333 L0,10.7482083 L43,10.7482083 Z" opacity="0.593633743"></path>
+                                                            <path class="color-background" d="M0,16.125 L0,32.25 C0,34.2297917 1.60354167,35.8333333 3.58333333,35.8333333 L39.4166667,35.8333333 C41.3964583,35.8333333 43,34.2297917 43,32.25 L43,16.125 L0,16.125 Z M19.7083333,26.875 L7.16666667,26.875 L7.16666667,23.2916667 L19.7083333,23.2916667 L19.7083333,26.875 Z M35.8333333,26.875 L28.6666667,26.875 L28.6666667,23.2916667 L35.8333333,23.2916667 L35.8333333,26.875 Z"></path>
+                                                        </g>
+                                                    </g>
+                                                </g>
+                                            </g>
+                                        </svg>
+                                    </div>
+                                    <div class="flex flex-col justify-center">
+                                        <h6 class="mb-1 text-sm font-normal leading-normal dark:text-white">اكتمل الدفع بنجاح</h6>
+                                        <p class="mb-0 ml-auto text-xs leading-tight text-slate-400">
+                                            <i class="ml-1 fa fa-clock" aria-hidden="true"></i>
+                                            2 أيام
+                                        </p>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+
+
+
+
+
+    </div>
+
+
+</nav>
+
+<!-- end Navbar -->
+
+<center>
+
+
+    <div class="A3_Intro">
+
+
+
+
+        <h2 style="font-size: 20px; color:black ">
+            مرحبًا بك يا @FullName ، يمكنك من هنا إضافة العملاء الجدد إلى النظام بكل سهولة.
+        </h2>
+
+    </div>
+</center>
+
+
+<style>
+    .A3_Intro {
+        display: inline-block; /* ياخد عرض المحتوى فقط */
+        text-align: center;
+        font-size: 25px;
+        margin: 30px auto; /* ⬅️ توسيط أفقي */
+        color: #000;
+        padding: 10px 20px;
+        background-color: rgba(255, 255, 255, 0.788);
+        border-radius: 100px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        font-weight: bold;
+    }
+
+    @@media (max-width: 600px) {
+        .A3_Intro {
+            font-size: 16px;
+            border-radius: 30px;
+            padding: 8px 16px;
+        }
+    }
+</style>
+
+
+
+
+
+<style>
+
+    .custom-box {
+        background-color: rgba(255, 255, 255, 0.85); /* شفاف بنسبة 15% */
+        border-radius: 30px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease;
+        color: #000; /* كل النص داخل البوكس لونه أسود */
+    }
+
+        .custom-box:hover {
+            transform: scale(1.02);
+        }
+
+    .custom-icon {
+        width: 48px;
+        height: 48px;
+        object-fit: contain;
+    }
+
+    .custom-img-wrapper {
+        display: inline-block;
+        width: 48px;
+        height: 48px;
+        padding: 0;
+        position: relative;
+        transition: transform 0.3s ease;
+    }
+
+        .custom-img-wrapper:hover {
+            transform: scale(1.1);
+        }
+</style>
+
+
+
+<div class="flex flex-wrap -mx-3">
+
+
+    <div class="w-full max-w-full px-3 mb-6 sm:w-1/2 xl:w-1/4">
+        <div class="custom-box p-4 animate__animated animate__fadeInUp">
+            <div class="flex flex-row -mx-3">
+                <div class="flex-none w-2/3 max-w-full px-3">
+                    <div>
+                        <p class="mb-0 font-bold font-sans text-sm font-semibold leading-normal">إجمالي العملاء</p>
+                        <h5 class="mb-0 text-black font-bold">@ViewBag.TotalClients</h5>
+                    </div>
+                </div>
+                <div class="px-3 text-left basis-1/3">
+                    <div class="custom-img-wrapper">
+                        <img src="@Url.Content("~/img/pngtree-professional-team-illustration-with-smiling-members-png-image_19970047.png")"
+                             alt="icon" class="custom-icon" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <div class="w-full max-w-full px-3 mb-6 sm:w-1/2 xl:w-1/4">
+        <div class="custom-box p-4 animate__animated animate__shakeY">
+            <div class="flex flex-row -mx-3">
+                <div class="flex-none w-2/3 max-w-full px-3">
+                    <div>
+                        <p class="mb-0 font-sans text-sm font-semibold leading-normal">العملاء الجدد اليوم</p>
+                        <h5 class="mb-0 font-bold text-black">@ViewBag.NewClientsToday</h5>
+                    </div>
+                </div>
+                <div class="px-3 text-left basis-1/3">
+                    <div class="custom-img-wrapper">
+                        <img src="@Url.Content("~/img/360_F_983537200_GJmbCSWgqAiucedKTq35URMHOmEDn9dq.png")"
+                             alt="icon" class="custom-icon" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+    <div class="w-full max-w-full px-3 mb-6 sm:w-1/2 xl:w-1/4">
+        <div class="custom-box p-4 animate__animated animate__fadeInUp">
+            <div class="flex flex-row -mx-3">
+                <div class="flex-none w-2/3 max-w-full px-3">
+                    <div>
+                        <p class="mb-0 font-sans text-sm font-semibold leading-normal">Follow Up</p>
+                        <h5 class="mb-0 text-black font-bold">@ViewBag.FollowUpClients </h5>
+                    </div>
+                </div>
+                <div class="px-3 text-left basis-1/3">
+                    <div class="inline-block w-12 h-12 text-center p-0 relative group animate-fade-in-down hover:scale-110 transition-transform duration-300">
+                        <img src="@Url.Content("~/img/123.png")" alt="icon" class="w-full h-full object-contain" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+    <div class="w-full max-w-full px-3 mb-6 sm:w-1/2 xl:w-1/4">
+        <div class="custom-box p-4 animate__animated animate__fadeInUp">
+            <div class="flex flex-row -mx-3">
+                <div class="flex-none w-2/3 max-w-full px-3">
+                    <div>
+                        <p class="mb-0 font-sans text-sm font-semibold leading-normal">Meeting</p>
+                        <h5 class="mb-0 text-black font-bold">@ViewBag.Meeting</h5>
+                    </div>
+                </div>
+                <div class="px-3 text-left basis-1/3">
+                    <div class="inline-block w-12 h-12 text-center p-0 relative group animate-fade-in-down hover:scale-110 transition-transform duration-300">
+                        <img src="@Url.Content("~/img/two-business-man-eating-lunch-600nw-688775614.png")" alt="icon" class="w-full h-full object-contain" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- كارت 1 -->
+    <!-- كارت 2 -->
+    <!-- كارت 3 -->
+
+
+    <div class="w-full max-w-full px-3 mb-6 sm:w-1/2 xl:w-1/4">
+        <div class="custom-box p-4 animate__animated animate__shakeY">
+            <div class="flex flex-row -mx-3">
+                <div class="flex-none w-2/3 max-w-full px-3">
+                    <div>
+                        <p class="mb-0 font-sans text-sm font-semibold leading-normal">Low Budget</p>
+                        <h5 class="mb-0 text-black font-bold ">@ViewBag.LowBudget</h5>
+                    </div>
+                </div>
+                <div class="px-3 text-left basis-1/3">
+                    <div class="inline-block w-12 h-12 text-center p-0 relative group animate-fade-in-down hover:scale-110 transition-transform duration-300">
+                        <img src="@Url.Content("~/img/istockphoto-471211070-612x612.png")" alt="icon" class="w-full h-full object-contain" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="w-full max-w-full px-3 mb-6 sm:w-1/2 xl:w-1/4">
+        <div class="custom-box p-4 animate__animated animate__shakeY">
+            <div class="flex flex-row -mx-3">
+                <div class="flex-none w-2/3 max-w-full px-3">
+                    <div>
+                        <p class="mb-0 font-sans text-sm font-semibold leading-normal">Done Deal</p>
+                        <h5 class="mb-0 font-bold text-black">@ViewBag.DoneDeal</h5>
+                    </div>
+                </div>
+                <div class="px-3 text-left basis-1/3">
+                    <div class="inline-block w-12 h-12 text-center p-0 relative group animate-fade-in-down hover:scale-110 transition-transform duration-300">
+                        <img src="@Url.Content("~/img/businessman-hand-shake-poses-with-client-cartoon-vector-8616822.png")" alt="icon" class="w-full h-full object-contain" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="w-full max-w-full px-3 mb-6 sm:w-1/2 xl:w-1/4">
+        <div class="custom-box p-4 animate__animated animate__shakeY">
+            <div class="flex flex-row -mx-3">
+                <div class="flex-none w-2/3 max-w-full px-3">
+                    <div>
+                        <p class="mb-0 font-sans text-sm font-semibold leading-normal">No answer</p>
+                        <h5 class="mb-0 font-bold text-black">@ViewBag.NoAnsewar</h5>
+                    </div>
+                </div>
+                <div class="px-3 text-left basis-1/3">
+                    <div class="inline-block w-12 h-12 text-center p-0 relative group animate-fade-in-down hover:scale-110 transition-transform duration-300">
+                        <img src="@Url.Content("~/img/cute-baby-looking-for-an-answer-illustration-vector.png")" alt="icon" class="w-full h-full object-contain" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="w-full max-w-full px-3 mb-6 sm:w-1/2 xl:w-1/4">
+        <div class="custom-box p-4 animate__animated animate__shakeY">
+            <div class="flex flex-row -mx-3">
+                <div class="flex-none w-2/3 max-w-full px-3">
+                    <div>
+                        <p class="mb-0 font-sans text-sm font-semibold leading-normal">عدد المشاريع</p>
+                        <h5 class="mb-0 font-bold text-black">@ViewBag.ProjectsCount</h5>
+                    </div>
+                </div>
+                <div class="px-3 text-left basis-1/3">
+                    <div class="inline-block w-12 h-12 text-center p-0 relative group animate-fade-in-down hover:scale-110 transition-transform duration-300">
+                        <img src="@Url.Content("~/img/square-construction-real-estate-logo-cartoon-vector-style-emphasizing-modern-clean-design-elements-illustration-346269428.png")" alt="icon" class="w-full h-full object-contain" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- كارت 4 -->
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- أضف هذا داخل <style> في رأس الصفحة أو ملف CSS -->
+<style>
+    .custom-card-bg {
+        background-color: rgba(255, 255, 255, 0.85);
+    }
+</style>
+
+<!-- cards -->
+<div class="w-full px-6 py-6 mx-auto">
+    <!-- row 1 -->
+    <!-- cards row 2 -->
+    <div class="flex flex-wrap mt-6 -mx-3">
+
+        <!-- الكارت الأول -->
+        <div class="px-3 mb-6 lg:mb-0 lg:w-7/12 lg:flex-none">
+            <div class="custom-card-bg relative flex flex-col min-w-0 break-words shadow-xl dark:bg-slate-850 dark:shadow-dark-xl rounded-2xl bg-clip-border">
+                <div class="flex-auto p-4">
+                    <div class="flex flex-wrap -mx-3">
+                        <div class="max-w-full px-3 lg:w-1/2 lg:flex-none">
+                            <div class="flex flex-col h-full">
+                                <h5 class="font-bold dark:text-white">المشاريع الخاصة بنا </h5>
+                                <p class="mb-12">هنا سوف تجد كل المشاريع التي قمت بأضافتها .</p>
+                                <a asp-action="projects" asp-controller="CLSprojects" class="mt-auto mb-0 text-sm font-semibold leading-normal group text-slate-500">
+                                    عرض المشاريع
+                                    <i class="fas fa-arrow-left ease-bounce text-sm group-hover:-translate-x-1.25 mr-1 leading-normal transition-all duration-200" aria-hidden="true"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="max-w-full px-3 mt-12 ml-0 mr-auto text-center lg:mt-0 lg:w-5/12 lg:flex-none">
+                            <img src="../assets/img/shapes/waves-white.svg" class="absolute top-0 hidden w-1/2 h-full lg:block" alt="waves" />
+                            <div class="relative flex items-center justify-center h-full">
+                                <img style="border-radius: 100px;" class="relative z-20 w-full pt-6" src="../img/3t3t.jpg" alt="rocket" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- الكارت الثاني -->
+        <div class="w-full max-w-full px-3 lg:w-5/12 lg:flex-none">
+            <div class="shadow-xl relative flex dark:bg-slate-850 dark:shadow-dark-xl h-full min-w-0 flex-col break-words rounded-2xl border-0 border-solid bg-clip-border p-4" style="background-color: rgba(255, 255, 255, 0.9);">
+                <div class="relative h-full overflow-hidden bg-cover rounded-xl" style="background-image: url('../assets/img/ivancik.jpg')">
+                    <span class="absolute top-0 left-0 w-full h-full bg-center bg-cover bg-gradient-to-tl from-zinc-800 to-zinc-700 dark:bg-gradient-to-tl dark:from-slate-750 dark:to-gray-850 opacity-80"></span>
+                    <div class="relative z-10 flex flex-col flex-auto h-full p-4">
+                        <h5 class="pt-2 mb-6 font-bold text-white dark:text-white">عملاؤنا</h5>
+                        <p class="text-white">
+                            يمكنك من خلال هذه الصفحة استعراض بيانات العملاء، متابعة الطلبات، وتحديد العملاء المحتملين لتسهيل عملية التواصل وتحقيق المبيعات.
+                        </p>
+                        <a asp-action="clients" asp-controller="CLSclients" class="mt-auto mb-0 text-sm font-semibold leading-normal text-white group">
+                            إدارة العملاء
+                            <i class="fas fa-arrow-left ease-bounce text-sm group-hover:-translate-x-1.25 mr-1 leading-normal transition-all duration-200" aria-hidden="true"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- cards row 3 -->
+    <!-- cards row 4 -->
+</div>
+
+<!-- end cards -->
+
+
+
+
+
+
+
+
+
+<style>
+    /* Button style - customized */
+    .custom-btn {
+        position: relative;
+        border: none;
+        background: transparent;
+        padding: 0;
+        cursor: pointer;
+        outline-offset: 4px;
+        transition: filter 250ms;
+        user-select: none;
+        touch-action: manipulation;
+    }
+
+    .custom-shadow {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border-radius: 12px;
+        background: hsl(0deg 0% 0% / 0.25);
+        will-change: transform;
+        transform: translateY(2px);
+        transition: transform 600ms cubic-bezier(.3, .7, .4, 1);
+    }
+
+    .custom-edge {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border-radius: 12px;
+        background: linear-gradient( to left, hsl(340deg 100% 16%) 0%, hsl(340deg 100% 32%) 8%, hsl(340deg 100% 32%) 92%, hsl(340deg 100% 16%) 100% );
+    }
+
+    .btn-front {
+        display: block;
+        position: relative;
+        padding: 12px 27px;
+        border-radius: 12px;
+        font-size: 1.1rem;
+        color: white;
+        background: hsl(345deg 100% 47%);
+        will-change: transform;
+        transform: translateY(-4px);
+        transition: transform 600ms cubic-bezier(.3, .7, .4, 1);
+    }
+
+    .custom-btn:hover {
+        filter: brightness(110%);
+    }
+
+        .custom-btn:hover .btn-front {
+            transform: translateY(-6px);
+            transition: transform 250ms cubic-bezier(.3, .7, .4, 1.5);
+        }
+
+    .custom-btn:active .btn-front {
+        transform: translateY(-2px);
+        transition: transform 34ms;
+    }
+
+    .custom-btn:hover .custom-shadow {
+        transform: translateY(4px);
+        transition: transform 250ms cubic-bezier(.3, .7, .4, 1.5);
+    }
+
+    .custom-btn:active .custom-shadow {
+        transform: translateY(1px);
+        transition: transform 34ms;
+    }
+
+    .custom-btn:focus:not(:focus-visible) {
+        outline: none;
+    }
+</style>
+<style>
+    .flex-btn-container {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 2rem;
+        gap: 10px; /* المسافة بين الزرين */
+    }
+
+</style>
+
+
+
+
+
+
+
+
+
+<div style="background-color:rgba(255, 255, 255, 0.85);" class="shadow-lg rounded-lg p-6" dir="rtl">
+
+    <br />
+
+
+
+
+
+    <center>
+
+        <h2 style="font-size: 30px; color: black;">عملاؤك المضافين اليوم</h2>
+    </center>
+
+    <hr style="border: none; border-top: 1px solid #999; margin: 20px 0;" />
+    <div class="search-wrapper mb-4">
+        <div id="customSearchContainer"></div>
+    </div>
+
+
+
+    <div class="overflow-x-auto relative">
+        <table id="myTable" class="display responsive" style="width:100%">
+            <thead>
+                <tr>
+                    <th><input type="text" placeholder="بحث بالتاريخ" style="width: 100%; font-size: 0.9em; border-radius:6px; border:1px solid #ddd; padding:2px 6px;" /></th>
+                    <th><input type="text" placeholder="بحث بالاسم" style="width: 100%; font-size: 0.9em; border-radius:6px; border:1px solid #ddd; padding:2px 6px;" /></th>
+                    <th><input type="text" placeholder="بحث بالهاتف" style="width: 100%; font-size: 0.9em; border-radius:6px; border:1px solid #ddd; padding:2px 6px;" /></th>
+                    <th><input type="text" placeholder="بحث بالحالة" style="width: 100%; font-size: 0.9em; border-radius:6px; border:1px solid #ddd; padding:2px 6px;" /></th>
+                    <th><input type="text" placeholder="بحث بالمشروع" style="width: 100%; font-size: 0.9em; border-radius:6px; border:1px solid #ddd; padding:2px 6px;" /></th>
+                    <th><input type="text" placeholder="بحث بالمصدر" style="width: 100%; font-size: 0.9em; border-radius:6px; border:1px solid #ddd; padding:2px 6px;" /></th>
+                    <th><input type="text" placeholder="بحث بالمضيف" style="width: 100%; font-size: 0.9em; border-radius:6px; border:1px solid #ddd; padding:2px 6px;" /></th>
+                    <th>
+                        <div id="customLengthContainer" style="transform: scale(0.8); "></div>
+
+                    </th>
+                </tr>
+
+                <tr>
+                    <th>تاريخ الإضافة</th>
+                    <th>الاسم</th>
+                    <th>رقم الهاتف</th>
+                    <th>الحالة</th>
+                    <th>المشروع المهتم به</th>
+                    <th>المصدر</th>
+                    <th>أضيف بواسطة</th>
+                    <th>إجراءات</th>
+                </tr>
+            </thead>
+
+
+            <tbody>
+
+
+                @foreach (var item in Model)
+                {
+
+                    var toggleId = "startToggle_" + item.Id;
+
+                    <tr>
+                        <td>@item.CreatedAt</td>
+                        <td>@item.Name</td>
+                        <td>@item.Phone</td>
+                        <td>@item.Status</td>
+                        <td>@item.Project.Name</td>
+                        <td>@item.Source</td>
+                        <td>@item.AddedBy.FullName</td>
+
+
+
+
+
+
+
+                        <td class="table-actions-cell">
+                            <div class="table-actions">
+
+
+
+
+
+
+
+                                <a asp-action="Details_Marketing" asp-controller="CLSclients" asp-route-id="@item.Id">
+
+
+
+
+                                    <button class="lock-button" aria-label="عرض">
+                                        <svg class="lock-svgIcon" viewBox="0 0 24 24" fill="none">
+                                            <path d="M12 5C7 5 2.73 8.11 1 12C2.73 15.89 7 19 12 19C17 19 21.27 15.89 23 12C21.27 8.11 17 5 12 5ZM12 17C9.24 17 7 14.76 7 12C7 9.24 9.24 7 12 7C14.76 7 17 9.24 17 12C17 14.76 14.76 17 12 17ZM12 9C10.34 9 9 10.34 9 12C9 13.66 10.34 15 12 15C13.66 15 15 13.66 15 12C15 10.34 13.66 9 12 9Z"
+                                                  fill="#ffffff" />
+                                        </svg>
+                                    </button>
+                                </a>
+
+                            </div>
+
+
+
+                        </td>
+                    </tr>
+                }
+
+
+
+            </tbody>
+        </table>
+
+    </div>
+    <div id="customButtonsContainer" class="mb-4 text-center"></div>
+    <br />
+</div>
+
+<!-- Modal لإضافة عميل جديد -->
+<div id="addClientModal" style="display:none; position:fixed; inset:0; z-index:9999; align-items:center; justify-content:center;">
+    <div style="background:#fff;  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2); border-radius:16px; max-width:400px; width:95%; margin:auto; padding:32px 24px; position:relative;">
+        <button onclick="closeAddClientModal()"
+                style="position:absolute; top:12px; left:12px; background:none; border:none; font-size:22px; color:#888; cursor:pointer;">
+            &times;
+        </button>
+        <h3 style="text-align:center; font-weight:bold; margin-bottom:18px;">إضافة عميل جديد</h3>
+
+        <form asp-action="Create" asp-controller="CLSclients" method="post" id="addClientForm">
+            @Html.AntiForgeryToken()
+
+            <div style="margin-bottom:12px;">
+                <label>الاسم</label>
+                <input type="text" name="Name" required style="width:100%; border:1px solid #ddd; border-radius:7px; padding:7px 10px;" />
+            </div>
+
+            <div style="margin-bottom:12px;">
+                <label>رقم الهاتف</label>
+                <input type="text" name="Phone" required style="width:100%; border:1px solid #ddd; border-radius:7px; padding:7px 10px;" />
+            </div>
+
+            <div style="margin-bottom:12px;">
+                <label>المشروع المهتم به</label>
+                <select name="ProjectId" required
+                        style="width:100%; border:1px solid #ddd; border-radius:7px; padding:7px 10px; background:#fff;"
+                        asp-items="ViewBag.Projects">
+                    <option value="">اختر مشروعًا...</option>
+                </select>
+            </div>
+
+            <div style="margin-bottom:18px;">
+                <label>المصدر</label>
+                <select name="Source" required style="width:100%; border:1px solid #ddd; border-radius:7px; padding:7px 10px; background:#fff;">
+                    <option value="">اختر المصدر...</option>
+                    <option value="فيس بوك">فيس بوك</option>
+                    <option value="بايوت">بايوت</option>
+                    <option value="دوبزل">دوبزل</option>
+                    <option value="واتساب">واتساب</option>
+                    <option value="موقع إلكتروني">موقع إلكتروني</option>
+                    <option value="إحالة">إحالة</option>
+                </select>
+            </div>
+
+            <div style="margin-bottom:18px;">
+                <label>ملاحظات (اختياري)</label>
+                <textarea name="Notes" rows="2"
+                          style="width:100%; border:1px solid #ddd; border-radius:7px; padding:7px 10px; resize:vertical; background:#fff;">
+                </textarea>
+            </div>
+
+            <button type="submit"
+                    style="width:100%; background:#6366f1; color:#fff; border:none; border-radius:8px; padding:10px 0; font-weight:bold; font-size:16px;">
+                إضافة
+            </button>
+        </form>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+        var table = $('#myTable').DataTable({
+            dom: '<"top-toolbar d-flex justify-between mb-3"lfB>rt<"bottom-toolbar d-flex justify-between mt-2"ip>',
+            language: {
+                search: "",
+                paginate: { next: "التالي", previous: "السابق" },
+                info: "عرض _START_ إلى _END_ من أصل _TOTAL_ صف",
+                lengthMenu: "_MENU_",
+                zeroRecords: "لا توجد بيانات"
+            },
+            pageLength: 10,
+            lengthMenu: [[3, 5, 10, 25, -1], [3, 5, 10, 25, "الكل"]],
+            responsive: true,
+            ordering: true,
+            orderCellsTop: true,
+            columnDefs: [
+                { orderable: false, targets: [] } // لو فيه أعمدة عايز تمنع فرزها، حدد رقمها هنا
+            ],
+            buttons: [
+                {
+                    extend: 'excelHtml5',
+                    className: 'dt-button',
+                    text: '<i class="fa fa-file-excel"></i> تصدير إلى Excel'
+                },
+                {
+                    extend: 'print',
+                    className: 'dt-button',
+                    text: '<i class="fa fa-print"></i> طباعة',
+                    exportOptions: {
+                        columns: ':visible'
+                    },
+                    customize: function (win) {
+                        $(win.document.body).css('direction', 'rtl');
+                        $(win.document.body).find('table').css({
+                            'text-align': 'center',
+                            'width': '100%',
+                            'font-size': '14px',
+                            'border-collapse': 'collapse'
+                        });
+                        $(win.document.body).find('th, td').css({
+                            'padding': '8px',
+                            'border': '1px solid #ccc',
+                            'white-space': 'normal',
+                            'vertical-align': 'top'
+                        });
+                        $(win.document.body).find('thead').css('background-color', '#f0f0f0');
+                    }
+                }
+            ],
+            initComplete: function () {
+                var api = this.api();
+                api.columns().every(function (colIdx) {
+                    $('input', api.table().header().rows[0].cells[colIdx]).on('keyup change clear', function () {
+                        if (api.column(colIdx).search() !== this.value) {
+                            api.column(colIdx).search(this.value).draw();
+                        }
+                    });
+                });
+            }
+        });
+          table.buttons().container().appendTo('#customButtonsContainer');
+          $('#myTable_filter input').attr('placeholder', 'بحث عام...');
+
+          $('#myTable_filter').appendTo('#customSearchContainer');
+
+            $('#myTable_length').appendTo('#customLengthContainer');
+    });
+</script>
+
+<style>
+    /* لون كل النصوص والمدخلات بالجدول */
+    #myTable,
+    #myTable th,
+    #myTable td,
+    #myTable input,
+    #myTable input::placeholder {
+        color: #000 !important;
+    }
+
+        /* توسيط عناوين الجدول (الصف الثاني في thead) */
+        #myTable thead tr:nth-child(2) th {
+            text-align: center !important;
+            vertical-align: middle !important;
+        }
+
+        /* توسيط بيانات الجدول */
+        #myTable tbody td {
+            text-align: center !important;
+            vertical-align: middle !important;
+        }
+
+        /* توسيط مدخلات البحث */
+        #myTable thead tr:first-child th input {
+            text-align: center !important;
+        }
+
+    /* لو جدول DataTables استخدم كمان دا */
+    table.dataTable thead th,
+    table.dataTable tbody td {
+        color: #000 !important;
+    }
+
+    #myTable input::placeholder {
+        color: black;
+        opacity: 10; /* علشان يبقى واضح */
+    }
+
+    @* 
+    #customSearchContainer input[type="search"] {
+        width: 900px;
+        padding: 10px;
+        border: 2px solid black;
+        border-radius: 8px;
+        font-size: 16px;
+        color: black; /* لون النص اللي المستخدم بيكتبه */
+    }
+
+        #customSearchContainer input[type="search"]::placeholder {
+            color: black; /* لون الـ placeholder */
+        }
+ *@
+    /* التحكم الكامل في شكل عرض عدد الصفوف */
+    #customLengthContainer {
+        display: inline-flex;
+        align-items: center;
+        font-size: 13px;
+    }
+
+    #customLengthContainer label {
+        margin: 0;
+        font-size: 13px;
+        color: #000;
+    }
+
+
+
+
+    #myTable_wrapper {
+        width: 100%;
+        overflow-x: auto;
+    }
+
+    #myTable {
+        width: 100% !important;
+        font-size: 90%; /* ⬅️ تصغير حجم البيانات بنسبة 10% */
+    }
+
+        #myTable thead th,
+        #myTable tbody td {
+            white-space: nowrap;
+        }
+
+
+
+    #customSearchContainer {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 0 10px;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+        #customSearchContainer input[type="search"] {
+            width: 100%;
+            max-width: 1600px; /* ⬅️ أكبر من 1200px */
+            min-width: 400px; /* ⬅️ مايقلش أوي */
+            padding: 14px;
+            border: 2px solid black;
+            border-radius: 8px;
+            font-size: 18px;
+            color: black;
+            box-sizing: border-box;
+            text-align: right;
+        }
+
+    /* موبايل */
+    @@media (max-width: 768px) {
+        #customSearchContainer input[type="search"] {
+            max-width: 95%;
+            font-size: 16px;
+            text-align: center;
+        }
+    }
+</style>
+
+
+
+
+
+
+
+
+
+<script>
+    function showAddClientModal() {
+        document.getElementById("addClientModal").style.display = "flex";
+    }
+
+    function closeAddClientModal() {
+        document.getElementById("addClientModal").style.display = "none";
+    }
+</script>
+
+
+
+
+<style>
+    /* لون كل النصوص والمدخلات بالجدول */
+    #myTable,
+    #myTable th,
+    #myTable td,
+    #myTable input,
+    #myTable input::placeholder {
+        color: #000 !important;
+    }
+
+        /* توسيط عناوين الجدول (الصف الثاني في thead) */
+        #myTable thead tr:nth-child(2) th {
+            text-align: center !important;
+            vertical-align: middle !important;
+        }
+
+        /* توسيط بيانات الجدول */
+        #myTable tbody td {
+            text-align: center !important;
+            vertical-align: middle !important;
+        }
+
+        /* توسيط مدخلات البحث */
+        #myTable thead tr:first-child th input {
+            text-align: center !important;
+        }
+
+    /* لو جدول DataTables استخدم كمان دا */
+    table.dataTable thead th,
+    table.dataTable tbody td {
+        color: #000 !important;
+    }
+
+    #myTable input::placeholder {
+        color: black;
+        opacity: 10; /* علشان يبقى واضح */
+    }
+</style>
+
+
+
+
+
+
+
+
+<style>
+
+
+
+
+    .lock-button {
+        width: 38px; /* تم زيادة العرض من 36px إلى 38px */
+        height: 38px; /* تم زيادة الارتفاع من 36px إلى 38px */
+        border-radius: 50%;
+        background-color: rgb(20, 20, 20);
+        border: none;
+        font-weight: 600;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0px 0px 14px rgba(0, 0, 0, 0.164);
+        cursor: pointer;
+        transition-duration: 0.3s;
+        overflow: hidden;
+        position: relative;
+        text-decoration: none !important;
+    }
+
+    .lock-svgIcon {
+        width: 11px; /* تم زيادة العرض من 10px إلى 11px */
+        transition-duration: 0.3s;
+    }
+
+    .lock-button:hover {
+        border-radius: 50px;
+        transition-duration: 0.3s;
+        background-color: rgb(5, 168, 48);
+    }
+
+        .lock-button:hover .lock-svgIcon {
+            transform: rotate(360deg);
+            transition-duration: 0.3s;
+        }
+
+    /* Tooltip style */
+    .lock-button::after {
+        content: "عرض";
+        position: absolute;
+        bottom: -30px; /* تم تعديل الموضع */
+        background: #333;
+        color: #fff;
+        padding: 4px 8px; /* تم زيادة الـ padding */
+        border-radius: 4px; /* تم تقليل نصف قطر الزوايا */
+        font-size: 12px; /* تم زيادة حجم الخط */
+        opacity: 0;
+        white-space: nowrap;
+        pointer-events: none;
+        transition: opacity 0.3s ease;
+    }
+
+    .lock-button:hover::after {
+        opacity: 1;
+    }
+
+
+
+
+    .button {
+        width: 38px; /* تم زيادة العرض من 36px إلى 38px */
+        height: 38px; /* تم زيادة الارتفاع من 36px إلى 38px */
+        border-radius: 50%;
+        background-color: rgb(20, 20, 20);
+        border: none;
+        font-weight: 600;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0px 0px 14px rgba(0, 0, 0, 0.164);
+        cursor: pointer;
+        transition-duration: 0.3s;
+        overflow: hidden;
+        position: relative;
+        gap: 1px;
+    }
+
+    .svgIcon {
+        width: 11px; /* تم زيادة العرض من 10px إلى 11px */
+        transition-duration: 0.3s;
+    }
+
+        .svgIcon path {
+            fill: white;
+        }
+
+    .button:hover {
+        width: 100px; /* تم زيادة العرض من 84px إلى 100px */
+        border-radius: 50px;
+        transition-duration: 0.3s;
+        background-color: rgb(255, 0, 0);
+        align-items: center;
+        gap: 0;
+    }
+
+        .button:hover .bin-bottom {
+            width: 30px;
+            transition-duration: 0.3s;
+            transform: translateY(60%);
+        }
+
+        .button:hover .bin-top {
+            width: 30px;
+            transition-duration: 0.3s;
+            transform: translateY(60%) rotate(160deg);
+        }
+
+    .button::before {
+        position: absolute;
+        top: -12px;
+        content: "حذف";
+        color: white;
+        transition-duration: 0.3s;
+        font-size: 2px;
+    }
+
+    .button:hover::before {
+        font-size: 12px; /* تم زيادة حجم الخط من 10px إلى 12px */
+        opacity: 1;
+        transform: translateY(21px);
+        transition-duration: 0.3s;
+    }
+
+    .edit-button {
+        width: 38px; /* تم زيادة العرض من 36px إلى 38px */
+        height: 38px; /* تم زيادة الارتفاع من 36px إلى 38px */
+        border-radius: 50%;
+        background-color: rgb(20, 20, 20);
+        border: none;
+        font-weight: 600;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0px 0px 14px rgba(0, 0, 0, 0.164);
+        cursor: pointer;
+        transition-duration: 0.3s;
+        overflow: hidden;
+        position: relative;
+        text-decoration: none !important;
+    }
+
+    .edit-svgIcon {
+        width: 11px; /* تم زيادة العرض من 10px إلى 11px */
+        transition-duration: 0.3s;
+    }
+
+        .edit-svgIcon path {
+            fill: white; /* إضافة لون أبيض للأيقونة */
+        }
+
+    .edit-button:hover {
+        width: 100px; /* تم زيادة العرض من 84px إلى 100px */
+        border-radius: 50px;
+        transition-duration: 0.3s;
+        background-color: rgb(109, 69, 255);
+        align-items: center;
+    }
+
+        .edit-button:hover .edit-svgIcon {
+            width: 10px; /* تم زيادة العرض من 8px إلى 10px */
+            transition-duration: 0.3s;
+            transform: translateY(60%);
+            -webkit-transform: rotate(360deg);
+            -moz-transform: rotate(360deg);
+            -o-transform: rotate(360deg);
+            -ms-transform: rotate(360deg);
+            transform: rotate(360deg);
+        }
+
+    .edit-button::before {
+        display: none;
+        content: "تعديل";
+        color: white;
+        transition-duration: 0.3s;
+        font-size: 2px;
+    }
+
+    .edit-button:hover::before {
+        display: block;
+        padding-right: 6px;
+        font-size: 12px; /* تم زيادة حجم الخط من 10px إلى 12px */
+        opacity: 1;
+        transform: translateY(0px);
+        transition-duration: 0.3s;
+    }
+
+
+
+    .Btn, .Btn.delete-btn {
+        direction: rtl; /* لجعل المحتوى من اليمين لليسار */
+        position: relative;
+        display: inline-flex;
+        align-items: center;
+        justify-content: flex-end; /* لعكس الاتجاه */
+        width: 48px; /* تكبير بسيط */
+        height: 22px; /* تكبير بسيط */
+        border: none;
+        padding: 0px 2px; /* أقل */
+        background: #6366f1; /* نفس تدرج ألوان navbar */
+        color: white;
+        font-weight: 500;
+        cursor: pointer;
+        border-radius: 7px;
+        box-shadow: 3px 3px 0px #5456cb;
+        transition-duration: .3s;
+        font-size: 11px; /* تكبير بسيط */
+        text-align: right; /* Ensure text is right-aligned */
+        white-space: nowrap; /* يمنع نزول النص للسطر التالي */
+    }
+
+        .Btn .edit-label, .Btn.delete-btn .delete-label {
+            display: inline-block;
+            vertical-align: middle;
+            text-align: right;
+            margin-left: 4px; /* أقل */
+            font-size: 11px;
+        }
+
+        .Btn .svg, .Btn.delete-btn .svg {
+            width: 8px; /* أصغر */
+            height: 8px;
+            margin-left: 0;
+            margin-right: 0;
+            fill: white;
+            position: static;
+            transition-duration: .3s;
+        }
+
+        .Btn:hover {
+            color: transparent;
+        }
+
+            .Btn:hover .svg {
+                transform: translateX(5px) scale(1.1);
+                transition-duration: .3s;
+            }
+
+        .Btn:active {
+            transform: translate(2px, 2px);
+            transition-duration: .3s;
+            box-shadow: 1px 1px 0px #6366f1;
+        }
+
+        .Btn.delete-btn {
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            justify-content: flex-end;
+            width: 48px; /* تكبير بسيط */
+            height: 22px; /* تكبير بسيط */
+            border: none;
+            padding: 0px 2px; /* أقل */
+            background: #fb1f1f; /* أحمر Tailwind */
+            color: white;
+            font-weight: 500;
+            cursor: pointer;
+            border-radius: 7px;
+            box-shadow: 3px 3px 0px #d60707;
+            transition-duration: .3s;
+            font-size: 11px; /* تكبير بسيط */
+            text-align: right;
+        }
+
+            .Btn.delete-btn:hover {
+                color: transparent;
+            }
+
+                .Btn.delete-btn:hover .svg {
+                    transform: translateX(5px) scale(1.1);
+                    transition-duration: .3s;
+                }
+
+            .Btn.delete-btn:active {
+                transform: translate(2px, 2px);
+                transition-duration: .3s;
+                box-shadow: 1px 1px 0px #fb1f1f;
+            }
+
+            /* ضبط المسافة بين الأزرار */
+            .Btn + .Btn,
+            .Btn + .Btn.delete-btn,
+            .Btn.delete-btn + .Btn,
+            .Btn.delete-btn + .Btn.delete-btn {
+                margin-right: 6px !important; /* مسافة واضحة وصغيرة */
+            }
+
+    /* إجبار أزرار الإجراءات أن تبقى بجانب بعض دائمًا */
+    .table-actions {
+        display: flex;
+        flex-direction: row-reverse;
+        align-items: center;
+        gap: 4px;
+        justify-content: center;
+    }
+
+    /* إزالة أي مسافة عمودية زائدة داخل خلية الإجراءات */
+    .table-actions-cell {
+        padding-top: 0.2rem;
+        padding-bottom: 0.2rem;
+        text-align: center;
+    }
+
+    .Btn.add-btn {
+        background: linear-gradient(to left, #222, #444);
+        box-shadow: 3px 3px 0px #222;
+        color: #fff;
+    }
+
+        .Btn.add-btn:hover {
+            color: transparent;
+        }
+
+            .Btn.add-btn:hover .svg {
+                transform: translateX(5px) scale(1.1);
+                transition-duration: .3s;
+            }
+
+        .Btn.add-btn:active {
+            transform: translate(2px, 2px);
+            transition-duration: .3s;
+            box-shadow: 1px 1px 0px #222;
+        }
+
+        .Btn.add-btn.add-btn-lg {
+            width: 120px;
+            height: 38px;
+            font-size: 16px;
+            border-radius: 12px;
+            box-shadow: 4px 4px 0px #5456cb00;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: row-reverse; /* يجعل الأيقونة على يسار النص في RTL */
+            align-items: center;
+            justify-content: flex-end;
+            text-align: right;
+            padding-right: 24px;
+            padding-left: 24px;
+        }
+
+            .Btn.add-btn.add-btn-lg .edit-label {
+                font-size: 15px; /* تكبير حجم النص */
+                font-weight: bold;
+                margin-left: 0;
+                margin-right: 8px; /* بدل margin-left */
+                transition: color 0.3s, opacity 0.3s;
+                position: relative;
+                right: 0;
+                left: auto;
+                z-index: 2;
+                width: 100%;
+                text-align: right;
+                display: inline-block;
+                opacity: 1;
+            }
+
+            .Btn.add-btn.add-btn-lg .svg {
+                width: 18px;
+                height: 18px;
+                transition: all 0.3s cubic-bezier(.4,2,.6,1);
+                position: absolute;
+                right: auto;
+                left: 16px; /* الأيقونة على اليسار في RTL */
+                top: 50%;
+                transform: translateY(-50%) translateX(0);
+                z-index: 3;
+            }
+
+            .Btn.add-btn.add-btn-lg:hover .svg {
+                left: 50%;
+                right: auto;
+                transform: translateY(-50%) translateX(-50%);
+            }
+
+            .Btn.add-btn.add-btn-lg:hover .edit-label {
+                opacity: 0;
+                color: transparent;
+            }
+
+    /* تحسين شكل حقل البحث الخاص بDataTables */
+    .dataTables_filter input[type="search"] {
+        border-radius: 8px !important;
+        border: 1px solid #ddd;
+        padding: 7px 14px;
+        font-size: 1rem;
+        transition: border-color 0.2s, box-shadow 0.2s;
+        outline: none;
+        box-shadow: 0 1px 4px #007bff11;
+        background: #fff;
+        color: #333;
+    }
+
+        .dataTables_filter input[type="search"]:focus {
+            border-color: #000000;
+        }
+
+    .action-btn {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        gap: 3px;
+        border: none;
+        border-radius: 5px;
+        font-size: 0.81rem;
+        font-weight: 500;
+        padding: 3px 7px 3px 7px;
+        cursor: pointer;
+        transition: background 0.16s, color 0.16s, box-shadow 0.16s, transform 0.1s;
+        box-shadow: 0 1px 3px #007bff11;
+        outline: none;
+        background: #f3f4f6;
+        color: #333;
+        min-width: 0;
+        min-height: 0;
+        line-height: 1.2;
+        text-align: center;
+    }
+
+        .action-btn i {
+            font-size: 0.93em;
+            margin-left: 3px;
+        }
+
+        .action-btn.view-btn {
+            background: linear-gradient(to left, #22c55e, #16a34a);
+            color: #fff;
+        }
+
+            .action-btn.view-btn:hover {
+                background: linear-gradient(to left, #16a34a, #22c55e);
+                color: #fff;
+                transform: translateY(-1px) scale(1.02);
+            }
+
+        .action-btn.edit-btn {
+            background: linear-gradient(to left, #2563eb, #6366f1);
+            color: #fff;
+        }
+
+            .action-btn.edit-btn:hover {
+                background: linear-gradient(to left, #6366f1, #2563eb);
+                color: #fff;
+                transform: translateY(-1px) scale(1.02);
+            }
+
+        .action-btn.delete-btn {
+            background: linear-gradient(to left, #ef4444, #b91c1c);
+            color: #fff;
+        }
+
+            .action-btn.delete-btn:hover {
+                background: linear-gradient(to left, #b91c1c, #ef4444);
+                color: #fff;
+                transform: translateY(-1px) scale(1.02);
+            }
+    /* توسيط كل محتوى الجدول (العناوين والصفوف) */
+    #myTable th, #myTable td {
+        /* توسيط النص */
+        text-align: center !important;
+        /* توسيط عمودي */
+        vertical-align: middle !important;
+    }
+
+    #myTable td {
+        /* توسيط أفقي وعمودي */
+        justify-content: center;
+        align-items: center;
+    }
+
+    /* إخفاء أسهم الفرز بجانب حقول البحث في صف البحث فقط */
+    #myTable thead tr:nth-child(2) th {
+        /* إزالة صورة السهم */
+        background-image: none !important;
+        cursor: default !important;
+    }
+
+        #myTable thead tr:nth-child(2) th:after,
+        #myTable thead tr:nth-child(2) th:before {
+            /* إخفاء الأسهم */
+            display: none !important;
+        }
+
+    /* توسيط نص placeholder ونص الإدخال في حقول البحث أسفل الجدول */
+    #myTable thead tr input[type="text"] {
+        /* توسيط النص */
+        text-align: center;
+    }
+
+        #myTable thead tr input[type="text"]::placeholder {
+            /* توسيط placeholder */
+            text-align: center;
+            direction: rtl;
+            opacity: 0.8;
+        }
+
+    /* Custom CSS for Clients Page */
+    .client-card {
+        transition: all 0.3s ease;
+    }
+
+        .client-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+    /* Notes Button and Modal Styles */
+    .my-post {
+        position: relative;
+        width: 100%;
+    }
+
+        .my-post #startToggle {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            margin: -1px;
+            border: 0;
+            padding: 0;
+            clip: rect(0 0 0 0);
+            overflow: hidden;
+            white-space: nowrap;
+        }
+
+        .my-post .pill-btn {
+            width: 100%;
+            padding: 8px 16px;
+            border-radius: 9999px;
+            font-family: 'Tajawal', sans-serif;
+            font-size: 12px;
+            font-weight: 500;
+            line-height: 1.5;
+            text-align: center;
+            color: #214968;
+            cursor: pointer;
+            position: relative;
+            z-index: 2;
+            transition: 0.3s cubic-bezier(0.22, 0.68, 0.12, 1.08);
+            background: radial-gradient(150% 100% at 50% 0, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0) 35%) no-repeat, linear-gradient(#eff4fa, #d7e0ea);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.06) inset, 0 4px 8px rgba(0, 0, 0, 0.18), 0 2px 0 #27567c, 0 3px 0 #5cd4ff;
+        }
+
+            .my-post .pill-btn::after {
+                content: "";
+                position: absolute;
+                inset: 0;
+                border-radius: inherit;
+                box-shadow: 0 0 0 0 #5cd4ff;
+                opacity: 0;
+                transition: 0.4s;
+            }
+
+            .my-post .pill-btn:hover {
+                transform: translateY(-1px);
+                background: radial-gradient(150% 100% at 50% 0, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0) 40%) no-repeat, linear-gradient(#f8fbff, #dfe9f3);
+                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05) inset, 0 6px 12px rgba(0, 0, 0, 0.22), 0 2px 0 #27567c, 0 3px 0 #5cd4ff, 0 0 8px 2px rgba(92, 212, 255, 0.6);
+            }
+
+                .my-post .pill-btn:hover::after {
+                    opacity: 1;
+                    box-shadow: 0 0 12px 4px rgba(92, 212, 255, 0.8);
+                }
+
+            .my-post .pill-btn:active {
+                transform: translateY(0);
+            }
+
+        .my-post #startToggle:checked + .pill-btn {
+            scale: 0.7;
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .my-post .start-card {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: 0.3s;
+            z-index: 3;
+        }
+
+        .my-post #startToggle:checked ~ .start-card {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .my-post .card-inner {
+            background: #fff;
+            padding: 20px;
+            border-radius: 16px;
+            width: 90%;
+            max-width: 360px;
+            position: relative;
+            transform: translateY(20px);
+            transition: 0.3s;
+        }
+
+        .my-post .my-post-title {
+            font-family: 'Tajawal', sans-serif;
+            font-size: 16px;
+            font-weight: 500;
+            line-height: 1.5;
+            color: #214968;
+            margin-bottom: 16px;
+            text-align: center;
+        }
+
+        .my-post .card-inner ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .my-post .card-inner li {
+            font-family: 'Tajawal', sans-serif;
+            font-size: 12px;
+            font-weight: 400;
+            line-height: 1.5;
+            color: #214968;
+            padding: 8px 0;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+            .my-post .card-inner li:last-child {
+                border-bottom: none;
+            }
+
+            .my-post .card-inner li:before {
+                content: "✦";
+                color: #5cd4ff;
+                font-size: 14px;
+            }
+
+        .my-post .close {
+            position: absolute;
+            top: 10px;
+            right: 14px;
+            font-size: 20px;
+            cursor: pointer;
+            color: #4d6e8d;
+            transition: 0.2s;
+        }
+
+            .my-post .close:hover {
+                transform: rotate(90deg) scale(1.1);
+            }
+</style>
+

@@ -1,0 +1,590 @@
+﻿<!-- Navbar -->
+<nav class="relative flex flex-wrap items-center justify-between px-0 py-2 mx-6 transition-all ease-in shadow-none duration-250 rounded-2xl lg:flex-nowrap lg:justify-start" navbar-main navbar-scroll="false">
+    <div class="flex items-center justify-between w-full px-4 py-1 mx-auto flex-wrap-inherit">
+        <nav>
+            <!-- breadcrumb -->
+            <ol class="flex flex-wrap pt-1 bg-transparent rounded-lg">
+                <li class="pl-2 text-sm leading-normal">
+                    <a class="text-white opacity-50" href="javascript:;">لوحات القيادة</a>
+                </li>
+                <li class="text-sm pl-2 capitalize leading-normal text-white before:float-right before:pl-2 before:text-gray-600 before:content-['/']" aria-current="page">RTL</li>
+            </ol>
+            <h6 class="mb-0 font-bold text-white capitalize dark:text-white">RTL</h6>
+        </nav>
+
+        <div class="flex items-center mt-2 grow sm:mt-0 md:mr-0 lg:flex lg:basis-auto">
+            <div class="flex items-center md:ml-auto md:pr-4">
+                <div class="relative flex flex-wrap items-stretch w-full transition-all rounded-lg ease">
+                    <span class="text-sm ease leading-5.6 absolute z-50 -mr-px flex h-full items-center whitespace-nowrap rounded-lg rounded-tl-none rounded-bl-none border border-l-0 border-solid border-transparent bg-transparent py-2 px-2.5 text-center font-normal text-slate-500 transition-all">
+                        <i class="fas fa-search" aria-hidden="true"></i>
+                    </span>
+                    <input type="text" class="text-sm focus:shadow-primary-outline pr-9 ease w-1/100 leading-5.6 relative -mr-px block min-w-0 flex-auto rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding py-2 pl-0 text-gray-700 transition-all focus:border-blue-500 focus:outline-none focus:transition-shadow" placeholder="أكتب هنا..." />
+                </div>
+            </div>
+            <ul class="flex flex-row justify-end pl-0 pr-10 mb-0 ml-0 mr-auto list-none md-max:w-full">
+                <!-- online builder btn  -->
+                <!-- <li class="flex items-center">
+                  <a class="inline-block px-8 py-2 mb-0 ml-4 text-xs font-bold text-center text-blue-500 uppercase align-middle transition-all ease-in bg-transparent border border-blue-500 border-solid rounded-lg shadow-none cursor-pointer leading-pro hover:-translate-y-px active:shadow-xs hover:border-blue-500 active:bg-blue-500 active:hover:text-blue-500 hover:text-blue-500 tracking-tight-rem hover:bg-transparent hover:opacity-75 hover:shadow-none active:text-white active:hover:bg-transparent" target="_blank" href="https://www.creative-tim.com/builder/soft-ui?ref=navbar-dashboard&amp;_ga=2.76518741.1192788655.1647724933-1242940210.1644448053">منشئ مضمنة</a>
+                </li> -->
+                <li class="flex items-center">
+                    <a href="../pages/sign-in.html" class="block px-0 py-2 text-sm font-semibold text-white transition-all ease-nav-brand">
+                        <i class="fa fa-user sm:mr-1" aria-hidden="true"></i>
+                        <span class="hidden sm:inline">يسجل دخول</span>
+                    </a>
+                </li>
+                <li class="flex items-center pr-4 xl:hidden">
+                    <a href="javascript:;" class="block p-0 text-sm text-white transition-all ease-nav-brand" sidenav-trigger>
+                        <div class="w-4.5 overflow-hidden">
+                            <i class="ease mb-0.75 relative block h-0.5 rounded-sm bg-white transition-all"></i>
+                            <i class="ease mb-0.75 relative block h-0.5 rounded-sm bg-white transition-all"></i>
+                            <i class="ease relative block h-0.5 rounded-sm bg-white transition-all"></i>
+                        </div>
+                    </a>
+                </li>
+                <li class="flex items-center px-4">
+                    <a href="javascript:;" class="p-0 text-sm text-white transition-all ease-nav-brand">
+                        <i fixed-plugin-button-nav class="cursor-pointer fa fa-cog" aria-hidden="true"></i>
+                        <!-- fixed-plugin-button-nav  -->
+                    </a>
+                </li>
+
+                <!-- notifications -->
+
+                <li class="relative flex items-center pl-2">
+                    <p class="hidden transform-dropdown-show"></p>
+                    <a dropdown-trigger href="javascript:;" class="block p-0 text-sm text-white transition-all ease-nav-brand" aria-expanded="false">
+                        <i class="cursor-pointer fa fa-bell" aria-hidden="true"></i>
+                    </a>
+
+                    <ul dropdown-menu class="text-sm dark:bg-slate-850 dark:shadow-dark-xl transform-dropdown before:font-awesome before:leading-default before:duration-350 before:ease lg:shadow-3xl duration-250 min-w-44 before:text-5.5 pointer-events-none absolute left-0 top-0 z-50 origin-top list-none rounded-lg border-0 border-solid border-transparent bg-white bg-clip-padding px-2 py-4 text-left text-slate-500 opacity-0 transition-all before:absolute before:right-auto before:top-0 before:left-2 before:z-50 before:inline-block before:font-normal before:text-white before:antialiased before:transition-all before:content-['\f0d8'] sm:-mr-6 before:sm:left-3 lg:absolute lg:mt-2 lg:block lg:cursor-pointer">
+                        <!-- add show class on dropdown open js -->
+                        <li class="relative mb-2">
+                            <a class="ease py-1.2 clear-both block w-full whitespace-nowrap rounded-lg bg-transparent px-4 duration-300 dark:hover:bg-slate-900 hover:bg-gray-200 hover:text-slate-700 lg:transition-colors" href="javascript:;">
+                                <div class="flex py-1">
+                                    <div class="my-auto">
+                                        <img src="../assets/img/team-2.jpg" class="inline-flex items-center justify-center ml-4 text-sm text-white h-9 w-9 max-w-none rounded-xl" />
+                                    </div>
+                                    <div class="flex flex-col justify-center">
+                                        <h6 class="mb-1 text-sm font-normal leading-normal dark:text-white"><span class="font-semibold">رسالة جديدة</span> من لور</h6>
+                                        <p class="mb-0 ml-auto text-xs leading-tight text-slate-400">
+                                            <i class="ml-1 fa fa-clock" aria-hidden="true"></i>
+                                            منذ 13 دقيقة
+                                        </p>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+
+                        <li class="relative mb-2">
+                            <a class="ease py-1.2 clear-both block w-full whitespace-nowrap rounded-lg px-4 transition-colors duration-300 dark:hover:bg-slate-900 hover:bg-gray-200 hover:text-slate-700" href="javascript:;">
+                                <div class="flex py-1">
+                                    <div class="my-auto">
+                                        <img src="../assets/img/small-logos/logo-spotify.svg" class="inline-flex items-center justify-center ml-4 text-sm text-white bg-gradient-to-tl from-zinc-800 to-zinc-700 dark:bg-gradient-to-tl dark:from-slate-750 dark:to-gray-850 h-9 w-9 max-w-none rounded-xl" />
+                                    </div>
+                                    <div class="flex flex-col justify-center">
+                                        <h6 class="mb-1 text-sm font-normal leading-normal dark:text-white"><span class="font-semibold">البوم جديد</span> بواسطة ترافيس سكوت</h6>
+                                        <p class="mb-0 ml-auto text-xs leading-tight text-slate-400">
+                                            <i class="ml-1 fa fa-clock" aria-hidden="true"></i>
+                                            يوم 1
+                                        </p>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+
+                        <li class="relative">
+                            <a class="ease py-1.2 clear-both block w-full whitespace-nowrap rounded-lg px-4 transition-colors duration-300 dark:hover:bg-slate-900 hover:bg-gray-200 hover:text-slate-700" href="javascript:;">
+                                <div class="flex py-1">
+                                    <div class="inline-flex items-center justify-center my-auto ml-4 text-sm text-white transition-all duration-200 ease-nav-brand bg-gradient-to-tl from-slate-600 to-slate-300 h-9 w-9 rounded-xl">
+                                        <svg width="12px" height="12px" viewBox="0 0 43 36" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                                            <title>credit-card</title>
+                                            <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                                <g transform="translate(-2169.000000, -745.000000)" fill="#FFFFFF" fill-rule="nonzero">
+                                                    <g transform="translate(1716.000000, 291.000000)">
+                                                        <g transform="translate(453.000000, 454.000000)">
+                                                            <path class="color-background" d="M43,10.7482083 L43,3.58333333 C43,1.60354167 41.3964583,0 39.4166667,0 L3.58333333,0 C1.60354167,0 0,1.60354167 0,3.58333333 L0,10.7482083 L43,10.7482083 Z" opacity="0.593633743"></path>
+                                                            <path class="color-background" d="M0,16.125 L0,32.25 C0,34.2297917 1.60354167,35.8333333 3.58333333,35.8333333 L39.4166667,35.8333333 C41.3964583,35.8333333 43,34.2297917 43,32.25 L43,16.125 L0,16.125 Z M19.7083333,26.875 L7.16666667,26.875 L7.16666667,23.2916667 L19.7083333,23.2916667 L19.7083333,26.875 Z M35.8333333,26.875 L28.6666667,26.875 L28.6666667,23.2916667 L35.8333333,23.2916667 L35.8333333,26.875 Z"></path>
+                                                        </g>
+                                                    </g>
+                                                </g>
+                                            </g>
+                                        </svg>
+                                    </div>
+                                    <div class="flex flex-col justify-center">
+                                        <h6 class="mb-1 text-sm font-normal leading-normal dark:text-white">اكتمل الدفع بنجاح</h6>
+                                        <p class="mb-0 ml-auto text-xs leading-tight text-slate-400">
+                                            <i class="ml-1 fa fa-clock" aria-hidden="true"></i>
+                                            2 أيام
+                                        </p>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- end Navbar -->
+<!-- محتوى خاص بالعملاء -->
+<div class="w-full px-6 py-6 mx-auto">
+    <div class="flex justify-center items-center mb-8">
+        <button class="Btn add-btn rtl-btn add-btn-lg">
+            <span class="edit-label">عميل جديد</span>
+            <svg class="svg" viewBox="0 0 448 512">
+                <path d="M432 256c0 13.3-10.7 24-24 24h-136v136c0 13.3-10.7 24-24 24s-24-10.7-24-24V280H24c-13.3 0-24-10.7-24-24s10.7-24 24-24h136V96c0-13.3 10.7-24 24-24s24 10.7 24 24v112h136c13.3 0 24 10.7 24 24z" />
+            </svg>
+        </button>
+    </div>
+
+    <div class="bg-white shadow-lg rounded-lg p-6" dir="rtl">
+        <h2 class="text-2xl font-bold text-gray-800 mb-6 text-center border-b border-gray-200 pb-4" style="letter-spacing:1px;">العملاء الجدد</h2>
+        <div class="overflow-x-auto relative">
+            <table id="myTable" class="display nowrap" style="width:100%">
+                <thead>
+                    <tr>
+                        <th><input type="text" placeholder="بحث بالتاريخ" style="width: 100%; font-size: 0.9em; border-radius:6px; border:1px solid #ddd; padding:2px 6px;" /></th>
+                        <th><input type="text" placeholder="بحث بالاسم" style="width: 100%; font-size: 0.9em; border-radius:6px; border:1px solid #ddd; padding:2px 6px;" /></th>
+                        <th><input type="text" placeholder="بحث بالهاتف" style="width: 100%; font-size: 0.9em; border-radius:6px; border:1px solid #ddd; padding:2px 6px;" /></th>
+                        <th><input type="text" placeholder="بحث بالحالة" style="width: 100%; font-size: 0.9em; border-radius:6px; border:1px solid #ddd; padding:2px 6px;" /></th>
+                        <th><input type="text" placeholder="بحث بالمشروع" style="width: 100%; font-size: 0.9em; border-radius:6px; border:1px solid #ddd; padding:2px 6px;" /></th>
+                        <th><input type="text" placeholder="بحث بالمصدر" style="width: 100%; font-size: 0.9em; border-radius:6px; border:1px solid #ddd; padding:2px 6px;" /></th>
+                        <th><input type="text" placeholder="بحث بالمضيف" style="width: 100%; font-size: 0.9em; border-radius:6px; border:1px solid #ddd; padding:2px 6px;" /></th>
+                        <th><input type="text" placeholder="بحث بالملاحظات" style="width: 100%; font-size: 0.9em; border-radius:6px; border:1px solid #ddd; padding:2px 6px;" /></th>
+                        <th></th>
+                    </tr>
+                    <tr>
+                        <th>تاريخ الإضافة</th>
+                        <th>الاسم</th>
+                        <th>رقم الهاتف</th>
+                        <th>الحالة</th>
+                        <th>المشروع المهتم به</th>
+                        <th>المصدر</th>
+                        <th>أضيف بواسطة</th>
+                        <th>ملاحظات</th>
+                        <th>إجراءات</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>2024-06-01</td>
+                        <td>صوفيا كارتر</td>
+                        <td>+966 555 123 456</td>
+                        <td>نشط</td>
+                        <td>ذا جراند ريزيدنس</td>
+                        <td>إحالة</td>
+                        <td>المسؤول</td>
+                        <td>
+                            <div class="my-post">
+                                <input type="checkbox" id="startToggle" />
+                                <label for="startToggle" class="pill-btn">عرض الملاحظات</label>
+
+                                <div class="start-card">
+                                    <div class="card-inner">
+                                        <label for="startToggle" class="close">×</label>
+                                        <div class="my-post-title">
+                                            <span>ملاحظات العميل</span>
+                                        </div>
+                                        <ul>
+                                            <li>✦ مهتم بشقة 3 غرف نوم</li>
+                                            <li>✦ يفضل الطابق الثالث فما فوق</li>
+                                            <li>✦ متاح للزيارة يومي الخميس والجمعة</li>
+                                            <li>✦ يفضل الدفع على أقساط</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+                        <td class="table-actions-cell">
+                            <div class="table-actions">
+
+                                <button class="button">
+                                    <svg xmlns="http://www.w3.org/2000/svg"
+                                         fill="none"
+                                         viewBox="0 0 69 14"
+                                         class="svgIcon bin-top">
+                                        <g clip-path="url(#clip0_35_24)">
+                                            <path fill="black"
+                                                  d="M20.8232 2.62734L19.9948 4.21304C19.8224 4.54309 19.4808 4.75 19.1085 4.75H4.92857C2.20246 4.75 0 6.87266 0 9.5C0 12.1273 2.20246 14.25 4.92857 14.25H64.0714C66.7975 14.25 69 12.1273 69 9.5C69 6.87266 66.7975 4.75 64.0714 4.75H49.8915C49.5192 4.75 49.1776 4.54309 49.0052 4.21305L48.1768 2.62734C47.3451 1.00938 45.6355 0 43.7719 0H25.2281C23.3645 0 21.6549 1.00938 20.8232 2.62734ZM64.0023 20.0648C64.0397 19.4882 63.5822 19 63.0044 19H5.99556C5.4178 19 4.96025 19.4882 4.99766 20.0648L8.19375 69.3203C8.44018 73.0758 11.6746 76 15.5712 76H53.4288C57.3254 76 60.5598 73.0758 60.8062 69.3203L64.0023 20.0648Z"></path>
+                                        </g>
+                                        <defs>
+                                            <clipPath id="clip0_35_24">
+                                                <rect fill="white" height="14" width="69"></rect>
+                                            </clipPath>
+                                        </defs>
+                                    </svg>
+
+                                    <svg xmlns="http://www.w3.org/2000/svg"
+                                         fill="none"
+                                         viewBox="0 0 69 57"
+                                         class="svgIcon bin-bottom">
+                                        <g clip-path="url(#clip0_35_22)">
+                                            <path fill="black"
+                                                  d="M20.8232 -16.3727L19.9948 -14.787C19.8224 -14.4569 19.4808 -14.25 19.1085 -14.25H4.92857C2.20246 -14.25 0 -12.1273 0 -9.5C0 -6.8727 2.20246 -4.75 4.92857 -4.75H64.0714C66.7975 -4.75 69 -6.8727 69 -9.5C69 -12.1273 66.7975 -14.25 64.0714 -14.25H49.8915C49.5192 -14.25 49.1776 -14.4569 49.0052 -14.787L48.1768 -16.3727C47.3451 -17.9906 45.6355 -19 43.7719 -19H25.2281C23.3645 -19 21.6549 -17.9906 20.8232 -16.3727ZM64.0023 1.0648C64.0397 0.4882 63.5822 0 63.0044 0H5.99556C5.4178 0 4.96025 0.4882 4.99766 1.0648L8.19375 50.3203C8.44018 54.0758 11.6746 57 15.5712 57H53.4288C57.3254 57 60.5598 54.0758 60.8062 50.3203L64.0023 1.0648Z"></path>
+                                        </g>
+                                        <defs>
+                                            <clipPath id="clip0_35_22">
+                                                <rect fill="white" height="57" width="69"></rect>
+                                            </clipPath>
+                                        </defs>
+                                    </svg>
+                                </button>
+
+
+
+                                <button class="edit-button">
+                                    <svg class="edit-svgIcon" viewBox="0 0 512 512">
+                                        <path d="M410.3 231l11.3-11.3-33.9-33.9-62.1-62.1L291.7 89.8l-11.3 11.3-22.6 22.6L58.6 322.9c-10.4 10.4-18 23.3-22.2 37.4L1 480.7c-2.5 8.4-.2 17.5 6.1 23.7s15.3 8.5 23.7 6.1l120.3-35.4c14.1-4.2 27-11.8 37.4-22.2L387.7 253.7 410.3 231zM160 399.4l-9.1 22.7c-4 3.1-8.5 5.4-13.3 6.9L59.4 452l23-78.1c1.4-4.9 3.8-9.4 6.9-13.3l22.7-9.1v32c0 8.8 7.2 16 16 16h32zM362.7 18.7L348.3 33.2 325.7 55.8 314.3 67.1l33.9 33.9 62.1 62.1 33.9 33.9 11.3-11.3 22.6-22.6 14.5-14.5c25-25 25-65.5 0-90.5L453.3 18.7c-25-25-65.5-25-90.5 0zm-47.4 168l-144 144c-6.2 6.2-16.4 6.2-22.6 0s-6.2-16.4 0-22.6l144-144c6.2-6.2 16.4-6.2 22.6 0s6.2 16.4 0 22.6z"></path>
+                                    </svg>
+                                </button>
+
+                                <a href="clients_details.html">
+
+
+
+
+                                    <button class="lock-button" aria-label="عرض">
+                                        <svg class="lock-svgIcon" viewBox="0 0 24 24" fill="none">
+                                            <path d="M12 5C7 5 2.73 8.11 1 12C2.73 15.89 7 19 12 19C17 19 21.27 15.89 23 12C21.27 8.11 17 5 12 5ZM12 17C9.24 17 7 14.76 7 12C7 9.24 9.24 7 12 7C14.76 7 17 9.24 17 12C17 14.76 14.76 17 12 17ZM12 9C10.34 9 9 10.34 9 12C9 13.66 10.34 15 12 15C13.66 15 15 13.66 15 12C15 10.34 13.66 9 12 9Z"
+                                                  fill="#ffffff" />
+                                        </svg>
+                                    </button>
+                                </a>
+
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>2024-06-01</td>
+                        <td>إيثان بينيت</td>
+                        <td>+966 555 987 654</td>
+                        <td>غير نشط</td>
+                        <td>أوشن فيو إستيتس</td>
+                        <td>الموقع الإلكتروني</td>
+                        <td>المسؤول</td>
+                        <td>
+                            <div class="my-post">
+                                <input type="checkbox" id="startToggle" />
+                                <label for="startToggle" class="pill-btn">GET</label>
+
+                                <div class="start-card">
+                                    <div class="card-inner">
+                                        <label for="startToggle" class="close">×</label>
+                                        <div class="my-post-title">
+                                            <span>ملاحظات العميل</span>
+                                        </div>
+                                        <ul>
+                                            <li>✦ مهتم بشقة 3 غرف نوم</li>
+                                            <li>✦ يفضل الطابق الثالث فما فوق</li>
+                                            <li>✦ متاح للزيارة يومي الخميس والجمعة</li>
+                                            <li>✦ يفضل الدفع على أقساط</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+                        <td class="table-actions-cell">
+                            <div class="table-actions">
+                                <button class="action-btn delete-btn" title="حذف"><i class="fa fa-trash"></i> حذف</button>
+                                <button class="action-btn edit-btn" title="تعديل"><i class="fa fa-edit"></i> تعديل</button>
+                                <button class="action-btn view-btn" title="عرض"><i class="fa fa-eye"></i> عرض</button>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>2024-06-01</td>
+                        <td>أوليفيا هايز</td>
+                        <td>+966 555 222 333</td>
+                        <td>محتمل</td>
+                        <td>سيتي سكيب تاورز</td>
+                        <td>وسائل التواصل الاجتماعي</td>
+                        <td>المسؤول</td>
+                        <td>
+                            <div class="my-post">
+                                <input type="checkbox" id="startToggle" />
+                                <label for="startToggle" class="pill-btn">GET STARTED</label>
+
+                                <div class="start-card">
+                                    <div class="card-inner">
+                                        <label for="startToggle" class="close">×</label>
+                                        <div class="my-post-title">
+                                            <span>ملاحظات العميل</span>
+                                        </div>
+                                        <ul>
+                                            <li>✦ مهتم بشقة 3 غرف نوم</li>
+                                            <li>✦ يفضل الطابق الثالث فما فوق</li>
+                                            <li>✦ متاح للزيارة يومي الخميس والجمعة</li>
+                                            <li>✦ يفضل الدفع على أقساط</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+                        <td class="table-actions-cell">
+                            <div class="table-actions">
+                                <button class="action-btn delete-btn" title="حذف"><i class="fa fa-trash"></i> حذف</button>
+                                <button class="action-btn edit-btn" title="تعديل"><i class="fa fa-edit"></i> تعديل</button>
+                                <button class="action-btn view-btn" title="عرض"><i class="fa fa-eye"></i> عرض</button>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>2024-06-01</td>
+                        <td>أوليفيا هايز</td>
+                        <td>+966 555 222 333</td>
+                        <td>محتمل</td>
+                        <td>سيتي سكيب تاورز</td>
+                        <td>وسائل التواصل الاجتماعي</td>
+                        <td>المسؤول</td>
+                        <td>
+                            <div class="my-post">
+                                <input type="checkbox" id="startToggle" />
+                                <label for="startToggle" class="pill-btn">GET STARTED</label>
+
+                                <div class="start-card">
+                                    <div class="card-inner">
+                                        <label for="startToggle" class="close">×</label>
+                                        <div class="my-post-title">
+                                            <span>ملاحظات العميل</span>
+                                        </div>
+                                        <ul>
+                                            <li>✦ مهتم بشقة 3 غرف نوم</li>
+                                            <li>✦ يفضل الطابق الثالث فما فوق</li>
+                                            <li>✦ متاح للزيارة يومي الخميس والجمعة</li>
+                                            <li>✦ يفضل الدفع على أقساط</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+                        <td class="table-actions-cell">
+                            <div class="table-actions">
+                                <button class="action-btn delete-btn" title="حذف"><i class="fa fa-trash"></i> حذف</button>
+                                <button class="action-btn edit-btn" title="تعديل"><i class="fa fa-edit"></i> تعديل</button>
+                                <button class="action-btn view-btn" title="عرض"><i class="fa fa-eye"></i> عرض</button>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>2024-06-01</td>
+                        <td>أوليفيا هايز</td>
+                        <td>+966 555 222 333</td>
+                        <td>محتمل</td>
+                        <td>سيتي سكيب تاورز</td>
+                        <td>وسائل التواصل الاجتماعي</td>
+                        <td>المسؤول</td>
+                        <td>
+                            <div class="my-post">
+                                <input type="checkbox" id="startToggle" />
+                                <label for="startToggle" class="pill-btn">GET STARTED</label>
+
+                                <div class="start-card">
+                                    <div class="card-inner">
+                                        <label for="startToggle" class="close">×</label>
+                                        <div class="my-post-title">
+                                            <span>ملاحظات العميل</span>
+                                        </div>
+                                        <ul>
+                                            <li>✦ مهتم بشقة 3 غرف نوم</li>
+                                            <li>✦ يفضل الطابق الثالث فما فوق</li>
+                                            <li>✦ متاح للزيارة يومي الخميس والجمعة</li>
+                                            <li>✦ يفضل الدفع على أقساط</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+                        <td class="table-actions-cell">
+                            <div class="table-actions">
+                                <button class="action-btn delete-btn" title="حذف"><i class="fa fa-trash"></i> حذف</button>
+                                <button class="action-btn edit-btn" title="تعديل"><i class="fa fa-edit"></i> تعديل</button>
+                                <button class="action-btn view-btn" title="عرض"><i class="fa fa-eye"></i> عرض</button>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>2024-06-01</td>
+                        <td>أوليفيا هايز</td>
+                        <td>+966 555 222 333</td>
+                        <td>محتمل</td>
+                        <td>سيتي سكيب تاورز</td>
+                        <td>وسائل التواصل الاجتماعي</td>
+                        <td>المسؤول</td>
+                        <td></td>
+                        <td class="table-actions-cell">
+                            <div class="table-actions">
+                                <button class="action-btn delete-btn" title="حذف"><i class="fa fa-trash"></i> حذف</button>
+                                <button class="action-btn edit-btn" title="تعديل"><i class="fa fa-edit"></i> تعديل</button>
+                                <button class="action-btn view-btn" title="عرض"><i class="fa fa-eye"></i> عرض</button>
+                            </div>
+                        </td>
+                    </tr>
+                
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Modal لإضافة عميل جديد -->
+    <div id="addClientModal" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.3); z-index:9999; align-items:center; justify-content:center;">
+        <div style="background:#fff; border-radius:16px; max-width:400px; width:95%; margin:auto; padding:32px 24px; position:relative;">
+            <button onclick="closeAddClientModal()" style="position:absolute; top:12px; left:12px; background:none; border:none; font-size:22px; color:#888; cursor:pointer;">&times;</button>
+            <h3 style="text-align:center; font-weight:bold; margin-bottom:18px;">إضافة عميل جديد</h3>
+            <form id="addClientForm">
+                <div style="margin-bottom:12px;">
+                    <label>الاسم</label>
+                    <input type="text" name="name" required style="width:100%; border:1px solid #ddd; border-radius:7px; padding:7px 10px;">
+                </div>
+                <div style="margin-bottom:12px;">
+                    <label>رقم الهاتف</label>
+                    <input type="text" name="phone" required style="width:100%; border:1px solid #ddd; border-radius:7px; padding:7px 10px;">
+                </div>
+                <div style="margin-bottom:12px;">
+                    <label>المشروع المهتم به</label>
+                    <select name="project" required style="width:100%; border:1px solid #ddd; border-radius:7px; padding:7px 10px; background:#fff;">
+                        <option value="">اختر مشروعًا...</option>
+                        <option value="ذا جراند ريزيدنس">ذا جراند ريزيدنس</option>
+                        <option value="أوشن فيو إستيتس">أوشن فيو إستيتس</option>
+                        <option value="سيتي سكيب تاورز">سيتي سكيب تاورز</option>
+                        <!-- أضف مشاريعك هنا -->
+                    </select>
+                </div>
+                <div style="margin-bottom:18px;">
+                    <label>المصدر</label>
+                    <select name="source" required style="width:100%; border:1px solid #ddd; border-radius:7px; padding:7px 10px; background:#fff;">
+                        <option value="">اختر المصدر...</option>
+                        <option value="فيس بوك">فيس بوك</option>
+                        <option value="بايوت">بايوت</option>
+                        <option value="دوبزل">دوبزل</option>
+                        <option value="واتساب">واتساب</option>
+                        <option value="موقع إلكتروني">موقع إلكتروني</option>
+                        <option value="إحالة">إحالة</option>
+                        <!-- أضف مصادر أخرى هنا -->
+                    </select>
+                </div>
+                <div style="margin-bottom:18px;">
+                    <label>ملاحظات (اختياري)</label>
+                    <textarea name="notes" rows="2" style="width:100%; border:1px solid #ddd; border-radius:7px; padding:7px 10px; resize:vertical; background:#fff;"></textarea>
+                </div>
+                <button type="submit" style="width:100%; background:#6366f1; color:#fff; border:none; border-radius:8px; padding:10px 0; font-weight:bold; font-size:16px;">إضافة</button>
+            </form>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@model TestDash.Models.CLSclient
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>CLSclient</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Phone" class="control-label"></label>
+                <input asp-for="Phone" class="form-control" />
+                <span asp-validation-for="Phone" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Status" class="control-label"></label>
+                <input asp-for="Status" class="form-control" />
+                <span asp-validation-for="Status" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ProjectId" class="control-label"></label>
+                <select asp-for="ProjectId" class ="form-control" asp-items="ViewBag.ProjectId"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="Source" class="control-label"></label>
+                <input asp-for="Source" class="form-control" />
+                <span asp-validation-for="Source" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Notes" class="control-label"></label>
+                <input asp-for="Notes" class="form-control" />
+                <span asp-validation-for="Notes" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CreatedAt" class="control-label"></label>
+                <input asp-for="CreatedAt" class="form-control" />
+                <span asp-validation-for="CreatedAt" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AddedById" class="control-label"></label>
+                <select asp-for="AddedById" class ="form-control" asp-items="ViewBag.AddedById"></select>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
